@@ -34,7 +34,8 @@
       "Bash(python \"C:\\\\Users\\\\JHINCA~1\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-jhincapie-OneDrive---Municipio-de-Rionegro-Escritorio-EDUCACI-N-2026-RIONEGRO-EDUCACION-AI\\\\4a180a84-d962-499c-96ae-779b502437dc\\\\scratchpad\\\\agregar_exclusiones.py\")",
       "Bash(python \"C:\\\\Users\\\\JHINCA~1\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-jhincapie-OneDrive---Municipio-de-Rionegro-Escritorio-EDUCACI-N-2026-RIONEGRO-EDUCACION-AI\\\\4a180a84-d962-499c-96ae-779b502437dc\\\\scratchpad\\\\actualizar_motivo_validacion.py\")",
       "Bash(python \"C:\\\\Users\\\\JHINCA~1\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-jhincapie-OneDrive---Municipio-de-Rionegro-Escritorio-EDUCACI-N-2026-RIONEGRO-EDUCACION-AI\\\\4a180a84-d962-499c-96ae-779b502437dc\\\\scratchpad\\\\revisar_columna_cdps.py\")",
-      "PowerShell(Get-ChildItem \"C:\\\\Users\\\\jhincapie\\\\OneDrive - Municipio de Rionegro\\\\Escritorio\\\\EDUCACIÓN\\\\2026\\\\RIONEGRO_EDUCACION_AI\\\\SECRETARIA_EDUCACION\\\\informes\\\\\" | Where-Object {$_.Extension -in \".xlsx\",\".json\"} | Select-Object Name, Length, LastWriteTime)"
+      "PowerShell(Get-ChildItem \"C:\\\\Users\\\\jhincapie\\\\OneDrive - Municipio de Rionegro\\\\Escritorio\\\\EDUCACIÓN\\\\2026\\\\RIONEGRO_EDUCACION_AI\\\\SECRETARIA_EDUCACION\\\\informes\\\\\" | Where-Object {$_.Extension -in \".xlsx\",\".json\"} | Select-Object Name, Length, LastWriteTime)",
+      "Bash(npm install *)"
     ]
   }
 }

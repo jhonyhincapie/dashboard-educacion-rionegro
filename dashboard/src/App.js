@@ -63,7 +63,7 @@ function App() {
     return val.toFixed(1) + '%';
   };
 
-  const toggle Componente = (comp) => {
+  const toggleComponente = (comp) => {
     setComponentesAbiertos(prev => ({
       ...prev,
       [comp]: !prev[comp]
