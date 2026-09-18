@@ -144,11 +144,13 @@ if __name__ == "__main__":
         os.makedirs(INFORMES_DIR, exist_ok=True)
 
     # Correr en modo desarrollo (cambiar debug=False en producción)
+    port = int(os.getenv("PORT", 5000))
+    debug = os.getenv("ENV", "development") == "development"
+
     print(f"\n🚀 Backend iniciado")
     print(f"📁 Leyendo informes de: {INFORMES_DIR}")
-    print(f"🌐 Servidor en: http://localhost:5000")
-    print(f"📊 Dashboard API: http://localhost:5000/api/presupuesto/latest")
-    print(f"\nPara exponer con Cloudflare Tunnel:")
-    print(f"   cloudflare tunnel run --url http://localhost:5000 dashboard-edu\n")
+    print(f"🌐 Servidor en: 0.0.0.0:{port}")
+    print(f"📊 Dashboard API: /api/presupuesto/latest")
+    print(f"🔧 Modo: {'Desarrollo' if debug else 'Producción'}\n")
 
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    app.run(host="0.0.0.0", port=port, debug=debug)
