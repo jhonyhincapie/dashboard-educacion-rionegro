@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import {
-  BarChart, Bar, LineChart, Line, PieChart, Pie, Cell,
-  XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
-  ComposedChart
+  BarChart, Bar, PieChart, Pie, Cell,
+  XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer
 } from 'recharts';
 import './App.css';
 
@@ -70,15 +69,6 @@ function App() {
     }));
   };
 
-  // Filtrar rubros por búsqueda
-  const filtrarRubros = (rubros, busca) => {
-    if (!busca) return rubros;
-    const lower = busca.toLowerCase();
-    return rubros.filter(r =>
-      r.nombre.toLowerCase().includes(lower) ||
-      r.cons_ppt.toLowerCase().includes(lower)
-    );
-  };
 
   // Datos para gráficos
   const datosCadena = [
