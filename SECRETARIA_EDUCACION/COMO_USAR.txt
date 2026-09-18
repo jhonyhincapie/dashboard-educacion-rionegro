@@ -1,0 +1,75 @@
+====================================================================
+  SEGUIMIENTO PRESUPUESTAL - SECRETARIA DE EDUCACION DE RIONEGRO
+  Como generar el informe - paso a paso
+====================================================================
+
+QUE HAY EN ESTA CARPETA
+-----------------------
+  GENERAR_INFORME.bat ....... doble clic para generar el informe
+  entradas\ ................. aqui se copia el Excel de Hacienda
+  informes\ ................. aqui aparecen los informes generados
+  maestro_rubros_educacion.xlsx ... lista de control (ver PASO 4)
+  seguimiento_manual_educacion.xlsx . contratos y observaciones (PASO 3)
+  historial_corridas.csv .... registro automatico de cada corrida
+  extractor_educacion.py .... el programa (no se toca)
+
+
+USO NORMAL - CADA VEZ QUE LLEGA UN NUEVO CORTE
+---------------------------------------------
+
+PASO 1. Pedir a Hacienda el archivo de egresos.
+   Debe llamarse:  Presupuesto de egreso a DD_MM_AAAA.xls
+   (la fecha de corte va en el nombre, ej: "a 30_09_2026.xls")
+
+PASO 2. Copiar ese archivo dentro de la carpeta  entradas\
+   (si habia uno anterior, se puede borrar o dejar; se toma el mas reciente)
+
+PASO 3. (Opcional pero recomendado) Actualizar el seguimiento manual.
+   Abrir  seguimiento_manual_educacion.xlsx  y llenar, por rubro:
+     - contratista, nro_contrato, objeto_contrato
+     - estado_gestion  (En contratacion / En ejecucion / Pendiente CDP / Liquidado / Sin iniciar)
+     - observacion, responsable
+   NO tocar las columnas  cons_ppt  ni  codigo_rubro.
+   Guardar y cerrar el archivo.
+
+PASO 4. (Solo si hubo reestructuracion) Actualizar el maestro.
+   Abrir  maestro_rubros_educacion.xlsx :
+     - Hoja INCLUSIONES: agregar un rubro que AHORA es de Educacion
+       (aunque su codigo no empiece por 02.01). Llenar cons_ppt,
+       codigo_rubro, motivo, documento_soporte, fecha, responsable.
+     - Hoja EXCLUSIONES: agregar un rubro 02.01 que YA NO es de Educacion.
+   Guardar y cerrar.
+
+PASO 5. Doble clic en  GENERAR_INFORME.bat
+   Se abre una ventana negra, procesa, y al terminar abre sola la
+   carpeta  informes\  con el archivo:
+     Seguimiento Presupuestal Educacion a DD_MM_AAAA.xlsx
+
+PASO 6. Abrir ese informe y revisar, en este orden:
+     1) Hoja RESUMEN     - las 4 cifras y el avance
+     2) Hoja REVISAR     - rubros nuevos sin decidir (si hay, ir al PASO 4)
+     3) Hoja ALERTAS     - lo que requiere atencion
+     4) Hoja CONCILIACION - diferencias contra el corte anterior
+     5) Hoja POR COMPONENTE y DETALLE - el detalle completo
+
+
+SI ALGO FALLA
+-------------
+  "No hay ningun archivo .xls en la carpeta entradas"
+        -> copie el Excel de Hacienda dentro de  entradas\
+
+  "No se pudo leer la fecha de corte del nombre del archivo"
+        -> renombre el archivo a:  Presupuesto de egreso a DD_MM_AAAA.xls
+
+  "El archivo de egresos no tiene el formato esperado. Faltan columnas..."
+        -> Hacienda cambio el formato del reporte. Avisar para ajustar el programa.
+
+  'py' o 'python' no se reconoce
+        -> falta instalar Python. Avisar.
+
+
+NADA SE SOBRESCRIBE
+-------------------
+  Cada corte genera su propio archivo (lleva la fecha en el nombre).
+  El maestro y el seguimiento manual solo se crean la primera vez;
+  despues el programa los lee, no los borra.

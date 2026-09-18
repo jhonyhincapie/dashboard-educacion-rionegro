@@ -1,0 +1,10 @@
+# Cloudflare Tunnel Configuration
+# Lugar: %USERPROFILE%\.cloudflared\config.yml
+
+tunnel: dashboard-educacion-rionegro
+credentials-file: C:\Users\jhincapie\.cloudflared\dashboard-educacion-rionegro.json
+
+ingress:
+  - hostname: dashboard-edu-rionegro.cfargotunnel.com
+    service: http://localhost:5000
+  - service: http_status:404
