@@ -69,7 +69,13 @@
       "Bash(python extractor_contratos.py)",
       "Bash(python publicar_dashboard.py)",
       "Bash(python servidor_dashboard.py)",
-      "Bash(python3)"
+      "Bash(python3)",
+      "Bash(python3 SECRETARIA_EDUCACION/servidor_dashboard.py)",
+      "Bash(curl -s http://localhost:8080/contratos.json)",
+      "Bash(python3 -m json.tool)",
+      "Bash(python3 -c ' *)",
+      "Bash(pkill -f \"servidor_dashboard\\\\|python.*8080\")",
+      "Bash(python3 -c \"import sys, json; d=json.load\\(sys.stdin\\); print\\(f'OK: {len\\(d[\\\\\"contratos\\\\\"]\\)} contratos'\\); c=next\\(\\(x for x in d['contratos'] if x.get\\('responsable'\\)\\), None\\); print\\(f'Ejemplo con responsable: {c[\\\\\"nro\\\\\"] if c else \\\\\"ninguno\\\\\"} -> {c.get\\(\\\\\"responsable\\\\\"\\) if c else \\\\\"\\\\\"}'\\)\")"
     ]
   }
 }

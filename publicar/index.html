@@ -620,7 +620,7 @@ function cTabla(vis){
     h+=`<tr class="nodo k" data-c="${esc(c.nro)}">
       <td class="n"><span class="chev">${ab?'▼':'▶'}</span>${esc(c.nro)}</td>
       <td class="n"><strong>${c.contratista?esc(c.contratista):'<span class="mut">Sin registro</span>'}</strong><br><span class="sub2">${c.objeto?esc(c.objeto):'<i>sin objeto</i>'}</span></td>
-      <td class="t">${c.area?esc(c.area):'<span class="mut">Sin asignar</span>'}</td>
+      <td class="t">${c.responsable?esc(c.responsable):(c.area?esc(c.area):'<span class="mut">Sin asignar</span>')}</td>
       <td class="t">${compTxt}</td>
       <td class="t">${fteTxt}</td>
       <td>${Fmt.num(c.valor_crp)}</td>
