@@ -219,7 +219,7 @@ tr.det td.r{padding:6px 8px;background:#fff}
   <div class="avisos" id="cAvisos" hidden></div>
   <h2 class="sec">Seguimiento de contratos <small id="cTablaNota">Cifras en pesos corrientes · clic en un contrato para ver sus CDP, CRP y rubros</small></h2>
   <div class="tabla"><table class="ct">
-    <thead><tr><th>Contrato</th><th>Subsecretaría</th><th>Componente</th><th>Fuente</th><th>Valor contrato</th><th>Comprometido (CRP)</th><th>Pagado</th><th>% Pagado</th><th>Cruce</th></tr></thead>
+    <thead><tr><th>Contrato</th><th>Contratista</th><th>Subsecretaría</th><th>Componente</th><th>Fuente</th><th>Comprometido (CRP)</th><th>Pagado</th><th>% Pagado</th><th>Cruce</th></tr></thead>
     <tbody id="cBody"></tbody>
   </table></div>
   <div class="legend-c" id="cLeyenda"></div>
@@ -604,7 +604,7 @@ function cAvisos(){
   $('cAvisos').hidden=!a.length;
 }
 function cTabla(vis){
-  if(!vis.length){$('cBody').innerHTML='<tr><td colspan="9" style="text-align:center;padding:24px;color:#5d6b78">Ningún contrato coincide con el filtro.</td></tr>';return;}
+  if(!vis.length){$('cBody').innerHTML='<tr><td colspan="10" style="text-align:center;padding:24px;color:#5d6b78">Ningún contrato coincide con el filtro.</td></tr>';return;}
   const lista=[...vis].sort((a,b)=>b.valor_crp-a.valor_crp);
   let h='';
   for(const c of lista){
@@ -618,18 +618,17 @@ function cTabla(vis){
     const compTxt=lista(c.componentes,c.componentes_sugeridos);
     const fteTxt=lista(c.fuentes,c.fuentes_sugeridas);
     h+=`<tr class="nodo k" data-c="${esc(c.nro)}">
-      <td class="n"><span class="chev">${ab?'▼':'▶'}</span>${esc(c.nro)}
-        <span class="sub2">${c.objeto?esc(c.objeto):(c.contratista?esc(c.contratista):'<i>sin objeto registrado</i>')}${c.objeto&&c.contratista?' · '+esc(c.contratista):''}</span></td>
+      <td class="n"><span class="chev">${ab?'▼':'▶'}</span>${esc(c.nro)}</td>
+      <td class="n"><strong>${c.contratista?esc(c.contratista):'<span class="mut">Sin registro</span>'}</strong><br><span class="sub2">${c.objeto?esc(c.objeto):'<i>sin objeto</i>'}</span></td>
       <td class="t">${c.area?esc(c.area):'<span class="mut">Sin asignar</span>'}</td>
       <td class="t">${compTxt}</td>
       <td class="t">${fteTxt}</td>
-      <td>${c.valor_contrato?Fmt.num(c.valor_contrato):'<span class="mut">—</span>'}</td>
       <td>${Fmt.num(c.valor_crp)}</td>
       <td>${Fmt.num(c.pagado)}</td>
       <td><span class="pbar"><i style="width:${Math.min(pct,100)}%"></i></span>${Fmt.pct(pct)}</td>
       <td class="t"><span class="badge ${cr.c}" title="${esc(cr.d)}">${cr.t}</span>${c.lineas_por_codigo?`<span class="badge b-cod" style="margin-top:3px" title="${esc(LIN.ok_codigo.d)}">${c.lineas_por_codigo} por código</span>`:''}</td></tr>`;
     if(ab){
-      h+=`<tr class="det"><td colspan="9"><table><thead><tr><th class="l">Rubro presupuestal</th><th class="l">Componente</th><th class="l">Fuente</th><th>CDP</th><th>CRP</th><th>Valor CDP</th><th>Valor CRP</th><th>Pagado</th><th class="l">Estado</th></tr></thead><tbody>`;
+      h+=`<tr class="det"><td colspan="10"><table><thead><tr><th class="l">Rubro presupuestal</th><th class="l">Componente</th><th class="l">Fuente</th><th>CDP</th><th>CRP</th><th>Valor CDP</th><th>Valor CRP</th><th>Pagado</th><th class="l">Estado</th></tr></thead><tbody>`;
       for(const l of c.lineas){
         const e=LIN[l.resolucion]||LIN.verificar;
         const rub=l.rubro?`${esc(l.rubro)} <span class="mut">(cons_ppt ${esc(l.cons_ppt)})</span>`

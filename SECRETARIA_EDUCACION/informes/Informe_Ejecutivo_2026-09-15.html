@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Informe Ejecutivo Presupuestal</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; background: white; padding: 40px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 3px solid #003d7a; }
+        .title { text-align: center; flex: 1; }
+        .title h1 { color: #003d7a; font-size: 28px; margin-bottom: 5px; }
+        .kpi-cards { display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px; margin-bottom: 30px; }
+        .kpi-card { background: white; border-left: 5px solid #003d7a; padding: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .kpi-label { font-size: 11px; color: #666; text-transform: uppercase; margin-bottom: 5px; }
+        .kpi-value { font-size: 20px; font-weight: bold; color: #003d7a; }
+        .kpi-pct { font-size: 14px; color: #999; margin-top: 5px; }
+        .content { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; margin-bottom: 30px; }
+        .section { background: #f9f9f9; padding: 20px; border-radius: 4px; }
+        .section h2 { color: #003d7a; font-size: 16px; margin-bottom: 15px; border-bottom: 2px solid #e0e0e0; padding-bottom: 10px; }
+        .brechas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+        .brecha-card { background: white; padding: 15px; border-radius: 4px; border-top: 4px solid #d32f2f; }
+        .brecha-label { font-size: 12px; font-weight: bold; color: #333; }
+        .brecha-pct { font-size: 20px; font-weight: bold; color: #d32f2f; margin: 10px 0; }
+        .barra { display: flex; align-items: center; margin-bottom: 10px; font-size: 12px; }
+        .barra-label { width: 150px; }
+        .barra-contenedor { flex: 1; background: #e0e0e0; height: 20px; margin: 0 10px; }
+        .barra-fill { height: 100%; background: linear-gradient(90deg, #003d7a, #4a90e2); }
+        .tabla { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        .tabla th { background: #003d7a; color: white; padding: 10px; text-align: left; font-size: 12px; }
+        .tabla td { padding: 8px 10px; border-bottom: 1px solid #e0e0e0; font-size: 11px; }
+        .footer { text-align: center; margin-top: 30px; padding-top: 20px; color: #999; font-size: 12px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div>Alcaldia Rionegro</div>
+            <div class="title">
+                <h1>Informe Ejecucion Presupuestal</h1>
+                <p>Secretaria Educacion | Corte: 2026-09-15</p>
+            </div>
+            <div>Generado: 18/09/2026</div>
+        </div>
+
+        <div class="kpi-cards">
+            <div class="kpi-card">
+                <div class="kpi-label">Presupuesto Definitivo</div>
+                <div class="kpi-value">$219.81B</div>
+                <div class="kpi-pct">100%</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Reservado CDP</div>
+                <div class="kpi-value">$172.44B</div>
+                <div class="kpi-pct">78.5%</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Comprometido RP</div>
+                <div class="kpi-value">$167.06B</div>
+                <div class="kpi-pct">76.0%</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Obligado OPS</div>
+                <div class="kpi-value">$106.74B</div>
+                <div class="kpi-pct">48.6%</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Pagado</div>
+                <div class="kpi-value">$100.82B</div>
+                <div class="kpi-pct">45.9%</div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div>
+                <div class="section">
+                    <h2>Brechas de Ejecucion</h2>
+                    <div class="brechas">
+                        <div class="brecha-card">
+                            <div class="brecha-label">Sin Reservar</div>
+                            <div class="brecha-pct">21.6%</div>
+                            <div class="brecha-label">$47.36B</div>
+                        </div>
+                        <div class="brecha-card">
+                            <div class="brecha-label">Sin Comprometer</div>
+                            <div class="brecha-pct">24.0%</div>
+                            <div class="brecha-label">$52.75B</div>
+                        </div>
+                        <div class="brecha-card">
+                            <div class="brecha-label">Sin Obligar</div>
+                            <div class="brecha-pct">51.4%</div>
+                            <div class="brecha-label">$113.07B</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section" style="margin-top: 20px;">
+                    <h2>Participacion por Componente</h2>
+                    <div class="barra"><div class="barra-label">PRESTACION DEL SERVICIO</div><div class="barra-contenedor"><div class="barra-fill" style="width:84.41382330435083%"></div></div><div>42.2%</div></div><div class="barra"><div class="barra-label">RECURSOS PROPIOS O LIBRE </div><div class="barra-contenedor"><div class="barra-fill" style="width:95.89762581505538%"></div></div><div>47.9%</div></div><div class="barra"><div class="barra-label">RENDIMIENTOS O RECURSOS D</div><div class="barra-contenedor"><div class="barra-fill" style="width:6.621152959494313%"></div></div><div>3.3%</div></div><div class="barra"><div class="barra-label">CALIDAD MATRICULA</div><div class="barra-contenedor"><div class="barra-fill" style="width:3.7031838999098796%"></div></div><div>1.9%</div></div><div class="barra"><div class="barra-label">CALIDAD GRATUIDAD</div><div class="barra-contenedor"><div class="barra-fill" style="width:2.4349170014779364%"></div></div><div>1.2%</div></div><div class="barra"><div class="barra-label">SGP - PGN - PAE</div><div class="barra-contenedor"><div class="barra-fill" style="width:4.002393966917644%"></div></div><div>2.0%</div></div>
+                </div>
+            </div>
+
+            <div>
+                <div class="section">
+                    <h2>Resumen Ejecutivo</h2>
+                    <div style="font-size: 13px; line-height: 1.8;">
+                        <p><strong>Ejecucion General:</strong><br>
+                        El 76.0% del presupuesto ha sido comprometido.</p>
+                        <p style="margin-top: 10px;"><strong>Disponibilidad:</strong><br>
+                        Existe $47.36B sin reservar.</p>
+                        <p style="margin-top: 10px;"><strong>Desembolsos:</strong><br>
+                        Se han pagado $100.82B (45.9%).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Seguimiento por Componente</h2>
+            <table class="tabla">
+                <thead><tr><th>Componente</th><th>Definitivo</th><th>Reservado</th><th>Comprometido</th><th>Obligado</th><th>Pagado</th><th>% Comp</th></tr></thead>
+                <tbody>
+                <tr><td><b>PRESTACION DEL SERVICIO</b></td><td>$92.77B</td><td>$64.53B</td><td>$64.10B</td><td>$62.61B</td><td>$62.61B</td><td>0.0%</td></tr><tr><td><b>RECURSOS PROPIOS O LIBRE INVERSION</b></td><td>$105.39B</td><td>$95.95B</td><td>$92.53B</td><td>$36.04B</td><td>$30.17B</td><td>0.0%</td></tr><tr><td><b>RENDIMIENTOS O RECURSOS DEL BALANCE DE PRESTACION DEL SERVICIO</b></td><td>$7.28B</td><td>$0.74B</td><td>$0.74B</td><td>$0.74B</td><td>$0.74B</td><td>0.0%</td></tr><tr><td><b>CALIDAD MATRICULA</b></td><td>$4.07B</td><td>$3.02B</td><td>$1.71B</td><td>$1.14B</td><td>$1.10B</td><td>0.0%</td></tr><tr><td><b>CALIDAD GRATUIDAD</b></td><td>$2.68B</td><td>$2.31B</td><td>$2.31B</td><td>$2.31B</td><td>$2.31B</td><td>0.0%</td></tr><tr><td><b>SGP - PGN - PAE</b></td><td>$4.40B</td><td>$4.34B</td><td>$4.11B</td><td>$3.90B</td><td>$3.90B</td><td>0.0%</td></tr><tr><td><b>PRIMERA INFANCIA</b></td><td>$2.73B</td><td>$1.56B</td><td>$1.56B</td><td>$0.00B</td><td>$0.00B</td><td>0.0%</td></tr><tr><td><b>INFRAESTRUCTURA</b></td><td>$0.48B</td><td>$0.00B</td><td>$0.00B</td><td>$0.00B</td><td>$0.00B</td><td>0.0%</td></tr><tr><td><b>VIGENCIAS ANTERIORES</b></td><td>$0.01B</td><td>$0.00B</td><td>$0.00B</td><td>$0.00B</td><td>$0.00B</td><td>0.0%</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="footer">
+            <p>Secretaria Educacion - Alcaldia Rionegro</p>
+            <p>Sistema Automatico de Presupuesto</p>
+        </div>
+    </div>
+</body>
+</html>

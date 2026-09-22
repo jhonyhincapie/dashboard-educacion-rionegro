@@ -1,0 +1,1627 @@
+{
+  "corte": "15/09/2026",
+  "fecha_generacion": "18/09/2026 12:00",
+  "totales_globales": {
+    "totales": {
+      "definitivo": 219806760754.12006,
+      "reservado": 172444800183.40997,
+      "comprometido": 167055210729.31,
+      "obligado": 106736493134.31,
+      "pagado": 100822528197.51
+    },
+    "calculos": {
+      "pct_reservado": 78.45290999775477,
+      "pct_comprometido": 76.00094289919548,
+      "pct_obligado": 48.55924029275307,
+      "pct_pagado": 45.8687111586581,
+      "sin_reservar": 47361960570.71008,
+      "sin_comprometer": 5389589454.099976,
+      "sin_obligar": 60318717595.0
+    }
+  },
+  "componentes": {
+    "PRESTACION DEL SERVICIO": {
+      "totales": {
+        "definitivo": 92773645317,
+        "reservado": 64528913780,
+        "comprometido": 64099550639,
+        "obligado": 62610613368,
+        "pagado": 62607351355
+      },
+      "subgrupos": {
+        "Nomina Docente, Directivo y Administrativo": {
+          "totales": {
+            "definitivo": 89671766904,
+            "reservado": 62018459840,
+            "comprometido": 61719681410,
+            "obligado": 61701663410,
+            "pagado": 61698401397
+          },
+          "rubros": [
+            {
+              "cons_ppt": "4865",
+              "nombre": "Sueldos Directivos Docentes Sin Situación de Fondos",
+              "definitivo": 371740660,
+              "reservado": 276440189,
+              "comprometido": 276440189,
+              "obligado": 276440189,
+              "pagado": 276440189
+            },
+            {
+              "cons_ppt": "4866",
+              "nombre": "Sueldo Directivos Docentes Con Situación de Fondos",
+              "definitivo": 4127246171,
+              "reservado": 2946272302,
+              "comprometido": 2944410737,
+              "obligado": 2944410737,
+              "pagado": 2944410737
+            },
+            {
+              "cons_ppt": "4867",
+              "nombre": "Sueldo Administrativo",
+              "definitivo": 449933960,
+              "reservado": 273314317,
+              "comprometido": 273314317,
+              "obligado": 273314317,
+              "pagado": 273314317
+            },
+            {
+              "cons_ppt": "4868",
+              "nombre": "Sueldo Docentes Con Situación de Fondos",
+              "definitivo": 50187458743,
+              "reservado": 35442189914,
+              "comprometido": 35442189914,
+              "obligado": 35442189914,
+              "pagado": 35442189914
+            },
+            {
+              "cons_ppt": "4869",
+              "nombre": "Sueldo Docentes Sin Situación de Fondos",
+              "definitivo": 4214618702,
+              "reservado": 3203544986,
+              "comprometido": 3203544986,
+              "obligado": 3203544986,
+              "pagado": 3203544986
+            },
+            {
+              "cons_ppt": "4871",
+              "nombre": "Horas Extra y días festivos Sin Situación de Fondos Directivos Docentes",
+              "definitivo": 3973131,
+              "reservado": 3973131,
+              "comprometido": 1578062,
+              "obligado": 1578062,
+              "pagado": 1578062
+            },
+            {
+              "cons_ppt": "4872",
+              "nombre": "Horas Extras y días festivos Con Situación de Fondos Directivos Docentes",
+              "definitivo": 29467958,
+              "reservado": 29467958,
+              "comprometido": 18147722,
+              "obligado": 18147722,
+              "pagado": 18147722
+            },
+            {
+              "cons_ppt": "4873",
+              "nombre": "Horas Extras y días festivos Administrativos",
+              "definitivo": 73685952,
+              "reservado": 73685952,
+              "comprometido": 20712030,
+              "obligado": 20712030,
+              "pagado": 20712030
+            },
+            {
+              "cons_ppt": "4874",
+              "nombre": "Horas Extras y días festivos Sin Situación de Fondos Docentes",
+              "definitivo": 60342374,
+              "reservado": 60342374,
+              "comprometido": 42069697,
+              "obligado": 42069697,
+              "pagado": 42069697
+            },
+            {
+              "cons_ppt": "4875",
+              "nombre": "Horas Extras y días festivos Con Situación de Fondos Docentes",
+              "definitivo": 693937310,
+              "reservado": 693937310,
+              "comprometido": 486380834,
+              "obligado": 486380834,
+              "pagado": 486380834
+            },
+            {
+              "cons_ppt": "4877",
+              "nombre": "Subsidio o prima de alimentación Administrativo",
+              "definitivo": 10652394,
+              "reservado": 5141074,
+              "comprometido": 5141074,
+              "obligado": 5141074,
+              "pagado": 5141074
+            },
+            {
+              "cons_ppt": "4878",
+              "nombre": "Subsidio o prima de alimentación Docentes",
+              "definitivo": 29669138,
+              "reservado": 10020479,
+              "comprometido": 10020479,
+              "obligado": 10020479,
+              "pagado": 10020479
+            },
+            {
+              "cons_ppt": "4880",
+              "nombre": "Auxilio de transporte Administrativo",
+              "definitivo": 24253683,
+              "reservado": 21878846,
+              "comprometido": 21878846,
+              "obligado": 21878846,
+              "pagado": 21878846
+            },
+            {
+              "cons_ppt": "4881",
+              "nombre": "Auxilio de transporte Docentes",
+              "definitivo": 42326468,
+              "reservado": 23564391,
+              "comprometido": 23564391,
+              "obligado": 23564391,
+              "pagado": 23564391
+            },
+            {
+              "cons_ppt": "4883",
+              "nombre": "Prima de servicio Directivo Docente",
+              "definitivo": 271800908,
+              "reservado": 271800908,
+              "comprometido": 271800908,
+              "obligado": 271800908,
+              "pagado": 271800908
+            },
+            {
+              "cons_ppt": "4884",
+              "nombre": "Prima de servicio Administrativo",
+              "definitivo": 24853427,
+              "reservado": 19854768,
+              "comprometido": 19854768,
+              "obligado": 19854768,
+              "pagado": 19854768
+            },
+            {
+              "cons_ppt": "4885",
+              "nombre": "prima de servicios docentes",
+              "definitivo": 2443865476,
+              "reservado": 2443865476,
+              "comprometido": 2443865476,
+              "obligado": 2443865476,
+              "pagado": 2443865476
+            },
+            {
+              "cons_ppt": "4887",
+              "nombre": "Bonificación por servicios prestados Administrativo",
+              "definitivo": 16680574,
+              "reservado": 13342139,
+              "comprometido": 13342139,
+              "obligado": 13342139,
+              "pagado": 13342139
+            },
+            {
+              "cons_ppt": "4890",
+              "nombre": "Prima de Navidad Directivo Docente",
+              "definitivo": 492295700,
+              "reservado": 1993215,
+              "comprometido": 1993215,
+              "obligado": 1993215,
+              "pagado": 1993215
+            },
+            {
+              "cons_ppt": "4891",
+              "nombre": "Prima de Navidad Administrativo",
+              "definitivo": 43649719,
+              "reservado": 3193853,
+              "comprometido": 3193853,
+              "obligado": 3193853,
+              "pagado": 3193853
+            },
+            {
+              "cons_ppt": "4892",
+              "nombre": "Prima de navidad Docentes",
+              "definitivo": 3932074209,
+              "reservado": 52179801,
+              "comprometido": 52179801,
+              "obligado": 52179801,
+              "pagado": 52179801
+            },
+            {
+              "cons_ppt": "4894",
+              "nombre": "Prima de vacaciones DD",
+              "definitivo": 224228235,
+              "reservado": 596249,
+              "comprometido": 596249,
+              "obligado": 596249,
+              "pagado": 596249
+            },
+            {
+              "cons_ppt": "4895",
+              "nombre": "Prima de vacaciones Administrativo",
+              "definitivo": 24233968,
+              "reservado": 8464385,
+              "comprometido": 8464385,
+              "obligado": 8464385,
+              "pagado": 8464385
+            },
+            {
+              "cons_ppt": "4896",
+              "nombre": "Prima de vacaciones Docentes",
+              "definitivo": 1335928920,
+              "reservado": 20706294,
+              "comprometido": 20706294,
+              "obligado": 20706294,
+              "pagado": 20706294
+            },
+            {
+              "cons_ppt": "4899",
+              "nombre": "Sobresueldo Sin Situación de Fondos Directivos Docentes",
+              "definitivo": 113964820,
+              "reservado": 84747215,
+              "comprometido": 84747215,
+              "obligado": 84747215,
+              "pagado": 84747215
+            },
+            {
+              "cons_ppt": "4900",
+              "nombre": "Sobresueldo Con Situación de Fondos Directivos Docentes",
+              "definitivo": 1300595430,
+              "reservado": 974592992,
+              "comprometido": 974592992,
+              "obligado": 974592992,
+              "pagado": 974592992
+            },
+            {
+              "cons_ppt": "4901",
+              "nombre": "Sobresueldo Sin Situación de Fondos Docentes",
+              "definitivo": 1222053,
+              "reservado": 115718,
+              "comprometido": 115718,
+              "obligado": 115718,
+              "pagado": 115718
+            },
+            {
+              "cons_ppt": "4902",
+              "nombre": "Sobresueldo Con Situación de Fondos Docentes",
+              "definitivo": 14053607,
+              "reservado": 1330754,
+              "comprometido": 1330754,
+              "obligado": 1330754,
+              "pagado": 1330754
+            },
+            {
+              "cons_ppt": "4904",
+              "nombre": "Bonificación Pedagógica Directivos Docentes",
+              "definitivo": 106945245,
+              "reservado": 105278108,
+              "comprometido": 105278108,
+              "obligado": 105278108,
+              "pagado": 105278108
+            },
+            {
+              "cons_ppt": "4905",
+              "nombre": "Bonificación Pedagógica Docentes",
+              "definitivo": 1264034403,
+              "reservado": 1251919570,
+              "comprometido": 1251919570,
+              "obligado": 1251919570,
+              "pagado": 1251919570
+            },
+            {
+              "cons_ppt": "4908",
+              "nombre": "Aportes Pensión Sector Privado",
+              "definitivo": 18792471,
+              "reservado": 9974400,
+              "comprometido": 9974400,
+              "obligado": 9974400,
+              "pagado": 9974400
+            },
+            {
+              "cons_ppt": "4909",
+              "nombre": "Aportes Pensión Sector Publico",
+              "definitivo": 54150473,
+              "reservado": 27187300,
+              "comprometido": 27187300,
+              "obligado": 27187300,
+              "pagado": 27187300
+            },
+            {
+              "cons_ppt": "4911",
+              "nombre": "Aportes de salud Administrativo Sector Privado",
+              "definitivo": 40589165,
+              "reservado": 22351800,
+              "comprometido": 22351800,
+              "obligado": 22351800,
+              "pagado": 22351800
+            },
+            {
+              "cons_ppt": "4912",
+              "nombre": "Aportes de salud Administrativo Sector Público",
+              "definitivo": 9552134,
+              "reservado": 3973700,
+              "comprometido": 3973700,
+              "obligado": 3973700,
+              "pagado": 3973700
+            },
+            {
+              "cons_ppt": "4913",
+              "nombre": "Aportes Patronales FOMAG Sin Situación de Fondo Directivo Docente",
+              "definitivo": 539191274,
+              "reservado": 423315446,
+              "comprometido": 423315446,
+              "obligado": 423315446,
+              "pagado": 423315446
+            },
+            {
+              "cons_ppt": "4914",
+              "nombre": "Aportes Patronales FOMAG Sin Situación de Fondos Docente",
+              "definitivo": 4663151058,
+              "reservado": 4081875411,
+              "comprometido": 4077476926,
+              "obligado": 4077476926,
+              "pagado": 4077476926
+            },
+            {
+              "cons_ppt": "4917",
+              "nombre": "Aportes de cesantías Sin Situación de Fondos Directivos Docentes",
+              "definitivo": 561703730,
+              "reservado": 446810243,
+              "comprometido": 446810243,
+              "obligado": 446810243,
+              "pagado": 446810243
+            },
+            {
+              "cons_ppt": "4918",
+              "nombre": "Aportes de cesantías Administrativo Sector Privado",
+              "definitivo": 46741292,
+              "reservado": 19586045,
+              "comprometido": 19586045,
+              "obligado": 19586045,
+              "pagado": 17185242
+            },
+            {
+              "cons_ppt": "4919",
+              "nombre": "Aportes de cesantías Sin Situación de Fondos Docentes",
+              "definitivo": 4917193895,
+              "reservado": 3946742925,
+              "comprometido": 3946742925,
+              "obligado": 3946742925,
+              "pagado": 3946742925
+            },
+            {
+              "cons_ppt": "4920",
+              "nombre": "Aportes de cesantías Administrativo Sector Público",
+              "definitivo": 40004613,
+              "reservado": 12811805,
+              "comprometido": 12811805,
+              "obligado": 12811805,
+              "pagado": 11950595
+            },
+            {
+              "cons_ppt": "4922",
+              "nombre": "Caja de compensación familiar Directivos Docentes",
+              "definitivo": 268073481,
+              "reservado": 186400900,
+              "comprometido": 186400900,
+              "obligado": 186400900,
+              "pagado": 186400900
+            },
+            {
+              "cons_ppt": "4923",
+              "nombre": "Caja de compensación familiar Administrativo",
+              "definitivo": 27066474,
+              "reservado": 14608400,
+              "comprometido": 14608400,
+              "obligado": 14608400,
+              "pagado": 14608400
+            },
+            {
+              "cons_ppt": "4924",
+              "nombre": "Caja de compensación familiar Docentes",
+              "definitivo": 2315726172,
+              "reservado": 1696079500,
+              "comprometido": 1696079500,
+              "obligado": 1696079500,
+              "pagado": 1696079500
+            },
+            {
+              "cons_ppt": "4926",
+              "nombre": "Riesgos Profesionales ARL",
+              "definitivo": 21218117,
+              "reservado": 6625800,
+              "comprometido": 6625800,
+              "obligado": 6625800,
+              "pagado": 6625800
+            },
+            {
+              "cons_ppt": "4928",
+              "nombre": "Aportes al ICBF Directivos Docentes",
+              "definitivo": 201066721,
+              "reservado": 139805078,
+              "comprometido": 139805078,
+              "obligado": 139805078,
+              "pagado": 139805078
+            },
+            {
+              "cons_ppt": "4929",
+              "nombre": "Aportes al ICBF Docentes",
+              "definitivo": 1736930233,
+              "reservado": 1272153722,
+              "comprometido": 1272153722,
+              "obligado": 1272153722,
+              "pagado": 1272153722
+            },
+            {
+              "cons_ppt": "4930",
+              "nombre": "Aportes al ICBF Administrativo",
+              "definitivo": 20308318,
+              "reservado": 10957100,
+              "comprometido": 10957100,
+              "obligado": 10957100,
+              "pagado": 10957100
+            },
+            {
+              "cons_ppt": "4932",
+              "nombre": "Aportes al SENA DD",
+              "definitivo": 33561325,
+              "reservado": 23326400,
+              "comprometido": 23326400,
+              "obligado": 23326400,
+              "pagado": 23326400
+            },
+            {
+              "cons_ppt": "4933",
+              "nombre": "Aportes al SENA Docentes",
+              "definitivo": 290211597,
+              "reservado": 212513300,
+              "comprometido": 212513300,
+              "obligado": 212513300,
+              "pagado": 212513300
+            },
+            {
+              "cons_ppt": "4934",
+              "nombre": "Aportes al SENA Administrativo",
+              "definitivo": 3397453,
+              "reservado": 1617000,
+              "comprometido": 1617000,
+              "obligado": 1617000,
+              "pagado": 1617000
+            },
+            {
+              "cons_ppt": "4936",
+              "nombre": "Aportes a la ESAP Directivos Docentes",
+              "definitivo": 33561325,
+              "reservado": 23326400,
+              "comprometido": 23326400,
+              "obligado": 23326400,
+              "pagado": 23326400
+            },
+            {
+              "cons_ppt": "4937",
+              "nombre": "Aportes a la ESAP Docentes",
+              "definitivo": 290211597,
+              "reservado": 212301000,
+              "comprometido": 212301000,
+              "obligado": 212301000,
+              "pagado": 212301000
+            },
+            {
+              "cons_ppt": "4938",
+              "nombre": "Aportes a la ESAP Administrativo",
+              "definitivo": 3396486,
+              "reservado": 1829300,
+              "comprometido": 1829300,
+              "obligado": 1829300,
+              "pagado": 1829300
+            },
+            {
+              "cons_ppt": "4940",
+              "nombre": "Escuelas Industriales e institutos técnicos DD",
+              "definitivo": 67066378,
+              "reservado": 46619500,
+              "comprometido": 46619500,
+              "obligado": 46619500,
+              "pagado": 46619500
+            },
+            {
+              "cons_ppt": "4941",
+              "nombre": "Escuelas Industriales e institutos técnicos Docentes",
+              "definitivo": 579514909,
+              "reservado": 424266800,
+              "comprometido": 424266800,
+              "obligado": 424266800,
+              "pagado": 424266800
+            },
+            {
+              "cons_ppt": "4942",
+              "nombre": "Escuelas Industriales e institutos técnicos Administrativo",
+              "definitivo": 6780787,
+              "reservado": 3655500,
+              "comprometido": 3655500,
+              "obligado": 3655500,
+              "pagado": 3655500
+            },
+            {
+              "cons_ppt": "5276",
+              "nombre": "Bonificación especial de recreación Administrativo",
+              "definitivo": 2736766,
+              "reservado": 572713,
+              "comprometido": 572713,
+              "obligado": 572713,
+              "pagado": 572713
+            },
+            {
+              "cons_ppt": "4948",
+              "nombre": "Bonificación G14 directivos inactivos Decreto 2565 2015",
+              "definitivo": 7968977,
+              "reservado": 7339832,
+              "comprometido": 7339832,
+              "obligado": 7339832,
+              "pagado": 7339832
+            },
+            {
+              "cons_ppt": "4949",
+              "nombre": "Bonificación G14 directivos docentes activos dcto2565 2015",
+              "definitivo": 23383891,
+              "reservado": 20918525,
+              "comprometido": 20918525,
+              "obligado": 20918525,
+              "pagado": 20918525
+            },
+            {
+              "cons_ppt": "4950",
+              "nombre": "Bonificación G14 docentes inactivos dcto2565 2015",
+              "definitivo": 115868588,
+              "reservado": 110097480,
+              "comprometido": 110097480,
+              "obligado": 110097480,
+              "pagado": 110097480
+            },
+            {
+              "cons_ppt": "4951",
+              "nombre": "Bonificación G14 docentes activos dcto2565 2015",
+              "definitivo": 162573717,
+              "reservado": 135419925,
+              "comprometido": 135419925,
+              "obligado": 135419925,
+              "pagado": 135419925
+            },
+            {
+              "cons_ppt": "4952",
+              "nombre": "Bonificación Mensual Docentes Dec-2000",
+              "definitivo": 558184441,
+              "reservado": 126610515,
+              "comprometido": 126610515,
+              "obligado": 126610515,
+              "pagado": 126610515
+            },
+            {
+              "cons_ppt": "4953",
+              "nombre": "Bonificación Mensual Direct. Docentes Dec-2000",
+              "definitivo": 47131625,
+              "reservado": 10571964,
+              "comprometido": 10571964,
+              "obligado": 10571964,
+              "pagado": 10571964
+            },
+            {
+              "cons_ppt": "4958",
+              "nombre": "Dotación Ley 70/88 Administrativo",
+              "definitivo": 8634900,
+              "reservado": 0,
+              "comprometido": 0,
+              "obligado": 0,
+              "pagado": 0
+            },
+            {
+              "cons_ppt": "4959",
+              "nombre": "Dotación Ley 70/88 Docentes",
+              "definitivo": 25947740,
+              "reservado": 18018000,
+              "comprometido": 18018000,
+              "obligado": 0,
+              "pagado": 0
+            },
+            {
+              "cons_ppt": "5641",
+              "nombre": "RB SGP-EDUCACION-PRESTACION DE SERVICIOS",
+              "definitivo": 441443,
+              "reservado": 441443,
+              "comprometido": 441443,
+              "obligado": 441443,
+              "pagado": 441443
+            },
+            {
+              "cons_ppt": "5643",
+              "nombre": "RB REINTEGRO RECURSOS SGP EDUCACION PRESTACIÓN DE SERVICIOS",
+              "definitivo": 0,
+              "reservado": 0,
+              "comprometido": 0,
+              "obligado": 0,
+              "pagado": 0
+            },
+            {
+              "cons_ppt": "5644",
+              "nombre": "RB RF SGP- EDUCACION PRESTACIÓN DEL SERVICIO",
+              "definitivo": 0,
+              "reservado": 0,
+              "comprometido": 0,
+              "obligado": 0,
+              "pagado": 0
+            },
+            {
+              "cons_ppt": "5824",
+              "nombre": "Reintegro nómina docentes",
+              "definitivo": 0,
+              "reservado": 0,
+              "comprometido": 0,
+              "obligado": 0,
+              "pagado": 0
+            },
+            {
+              "cons_ppt": "5827",
+              "nombre": "RF SGP- Prestación del Servicio educación",
+              "definitivo": 0,
+              "reservado": 0,
+              "comprometido": 0,
+              "obligado": 0,
+              "pagado": 0
+            }
+          ],
+          "calculos": {
+            "pct_reservado": 69.16163468307161,
+            "pct_comprometido": 68.82844348999537,
+            "pct_obligado": 68.80835020910877,
+            "pct_pagado": 68.80471248330873,
+            "sin_reservar": 27653307064,
+            "sin_comprometer": 298778430,
+            "sin_obligar": 18018000
+          }
+        },
+        "Otros Gastos Administrativos": {
+          "totales": {
+            "definitivo": 785200240,
+            "reservado": 610842311,
+            "comprometido": 480257600,
+            "obligado": 315000000,
+            "pagado": 315000000
+          },
+          "rubros": [
+            {
+              "cons_ppt": "4965",
+              "nombre": "Fortalecimiento de estrategias para la permanencia escolar otros administrativos",
+              "definitivo": 785200240,
+              "reservado": 610842311,
+              "comprometido": 480257600,
+              "obligado": 315000000,
+              "pagado": 315000000
+            }
+          ],
+          "calculos": {
+            "pct_reservado": 77.79446310408667,
+            "pct_comprometido": 61.16371029127551,
+            "pct_obligado": 40.11715533861783,
+            "pct_pagado": 40.11715533861783,
+            "sin_reservar": 174357929,
+            "sin_comprometer": 130584711,
+            "sin_obligar": 165257600
+          }
+        },
+        "SVC Aseo": {
+          "totales": {
+            "definitivo": 759871200,
+            "reservado": 759871200,
+            "comprometido": 759871200,
+            "obligado": 0,
+            "pagado": 0
+          },
+          "rubros": [
+            {
+              "cons_ppt": "4963",
+              "nombre": "Fortalecimiento de estrategias para la permanencia escolar svc aseo",
+              "definitivo": 759871200,
+              "reservado": 759871200,
+              "comprometido": 759871200,
+              "obligado": 0,
+              "pagado": 0
+            }
+          ],
+          "calculos": {
+            "pct_reservado": 100.0,
+            "pct_comprometido": 100.0,
+            "pct_obligado": 0.0,
+            "pct_pagado": 0.0,
+            "sin_reservar": 0,
+            "sin_comprometer": 0,
+            "sin_obligar": 759871200
+          }
+        },
+        "SVC Vigilancia": {
+          "totales": {
+            "definitivo": 759871200,
+            "reservado": 759871200,
+            "comprometido": 759871200,
+            "obligado": 214080729,
+            "pagado": 214080729
+          },
+          "rubros": [
+            {
+              "cons_ppt": "4964",
+              "nombre": "Fortalecimiento de estrategias para la permanencia escolar svc vigilancia",
+              "definitivo": 759871200,
+              "reservado": 759871200,
+              "comprometido": 759871200,
+              "obligado": 214080729,
+              "pagado": 214080729
+            }
+          ],
+          "calculos": {
+            "pct_reservado": 100.0,
+            "pct_comprometido": 100.0,
+            "pct_obligado": 28.173291605208885,
+            "pct_pagado": 28.173291605208885,
+            "sin_reservar": 0,
+            "sin_comprometer": 0,
+            "sin_obligar": 545790471
+          }
+        },
+        "Conectividad": {
+          "totales": {
+            "definitivo": 417066544,
+            "reservado": 0,
+            "comprometido": 0,
+            "obligado": 0,
+            "pagado": 0
+          },
+          "rubros": [
+            {
+              "cons_ppt": "4966",
+              "nombre": "Conectividad",
+              "definitivo": 417066544,
+              "reservado": 0,
+              "comprometido": 0,
+              "obligado": 0,
+              "pagado": 0
+            }
+          ],
+          "calculos": {
+            "pct_reservado": 0.0,
+            "pct_comprometido": 0.0,
+            "pct_obligado": 0.0,
+            "pct_pagado": 0.0,
+            "sin_reservar": 417066544,
+            "sin_comprometer": 0,
+            "sin_obligar": 0
+          }
+        },
+        "Necesidades Educativas Especiales": {
+          "totales": {
+            "definitivo": 379869229,
+            "reservado": 379869229,
+            "comprometido": 379869229,
+            "obligado": 379869229,
+            "pagado": 379869229
+          },
+          "rubros": [
+            {
+              "cons_ppt": "4967",
+              "nombre": "Atención a población con necesidades especiales o discapacidades",
+              "definitivo": 379869229,
+              "reservado": 379869229,
+              "comprometido": 379869229,
+              "obligado": 379869229,
+              "pagado": 379869229
+            }
+          ],
+          "calculos": {
+            "pct_reservado": 100.0,
+            "pct_comprometido": 100.0,
+            "pct_obligado": 100.0,
+            "pct_pagado": 100.0,
+            "sin_reservar": 0,
+            "sin_comprometer": 0,
+            "sin_obligar": 0
+          }
+        }
+      },
+      "calculos": {
+        "pct_reservado": 69.55522073053176,
+        "pct_comprometido": 69.09241349736452,
+        "pct_obligado": 67.4874994445509,
+        "pct_pagado": 67.48398334578293,
+        "sin_reservar": 28244731537,
+        "sin_comprometer": 429363141,
+        "sin_obligar": 1488937271
+      }
+    },
+    "RECURSOS PROPIOS O LIBRE INVERSION": {
+      "totales": {
+        "definitivo": 105394732472.09001,
+        "reservado": 95945703844.24,
+        "comprometido": 92531039743,
+        "obligado": 36039650781,
+        "pagado": 30171395990
+      },
+      "subgrupos": {
+        "RECURSOS PROPIOS O LIBRE INVERSION": {
+          "totales": {
+            "definitivo": 105394732472.09001,
+            "reservado": 95945703844.24,
+            "comprometido": 92531039743,
+            "obligado": 36039650781,
+            "pagado": 30171395990
+          },
+          "rubros": [
+            {
+              "cons_ppt": "5869",
+              "nombre": "020103 Ciudadela Educativa Etapa 1",
+              "definitivo": 42000000000,
+              "reservado": 34257295709,
+              "comprometido": 34257295709,
+              "obligado": 15399242347,
+              "pagado": 15399242347
+            },
+            {
+              "cons_ppt": "4976",
+              "nombre": "020102 Formulación e implementación del plan Decenal de Educación",
+              "definitivo": 0,
+              "reservado": 0,
+              "comprometido": 0,
+              "obligado": 0,
+              "pagado": 0
+            },
+            {
+              "cons_ppt": "4981",
+              "nombre": "020105 Desarrollo del programa de bienestar para docentes y directivos docentes",
+              "definitivo": 261614015,
+              "reservado": 261614015,
+              "comprometido": 18195388,
+              "obligado": 18195388,
+              "pagado": 18195388
+            },
+            {
+              "cons_ppt": "4985",
+              "nombre": "020106 Mejoramiento de la cobertura Educativa PAE",
+              "definitivo": 27344058931,
+              "reservado": 27344058931,
+              "comprometido": 27217166386,
+              "obligado": 7985014808,
+              "pagado": 7548707923
+            },
+            {
+              "cons_ppt": "4986",
+              "nombre": "020106 Mejoramiento de la cobertura Educativa Paquetes PAE",
+              "definitivo": 7721361064,
+              "reservado": 7338263218,
+              "comprometido": 7320703987,
+              "obligado": 3411171557,
+              "pagado": 1133544243
+            },
+            {
+              "cons_ppt": "4972",
+              "nombre": "020101 VF Fortalecimiento de la pertinencia y la calidad educativa",
+              "definitivo": 3086586792.85,
+              "reservado": 2902424207,
+              "comprometido": 2902424207,
+              "obligado": 2902424207,
+              "pagado": 2902424207
+            },
+            {
+              "cons_ppt": "4973",
+              "nombre": "020101 Fortalecimiento de la pertinencia y la calidad educativa",
+              "definitivo": 109270604,
+              "reservado": 45506000,
+              "comprometido": 20306000,
+              "obligado": 11213763,
+              "pagado": 11213763
+            },
+            {
+              "cons_ppt": "4995",
+              "nombre": "020107 Fortalecimiento del programa de Bilinguismo",
+              "definitivo": 2125253816,
+              "reservado": 1530633596,
+              "comprometido": 1530633596,
+              "obligado": 0,
+              "pagado": 0
+            },
+            {
+              "cons_ppt": "4979",
+              "nombre": "020104 Fortalecimiento de la Educación técnica, tecnológica y superior",
+              "definitivo": 750999040,
+              "reservado": 750999040,
+              "comprometido": 463568362,
+              "obligado": 463568362,
+              "pagado": 201282900
+            },
+            {
+              "cons_ppt": "4996",
+              "nombre": "020108 Fortalecimiento del Bienestar Institucional",
+              "definitivo": 8346289732,
+              "reservado": 7941535948,
+              "comprometido": 7663802309,
+              "obligado": 798613653,
+              "pagado": 386530709
+            },
+            {
+              "cons_ppt": "4974",
+              "nombre": "020101 Fortalecimiento de la pertinencia y la calidad educativa",
+              "definitivo": 1250429381,
+              "reservado": 1250429381,
+              "comprometido": 0,
+              "obligado": 0,
+              "pagado": 0
+            },
+            {
+              "cons_ppt": "4987",
+              "nombre": "020106 Mejoramiento de la cobertura Educativa Equipo",
+              "definitivo": 0,
+              "reservado": 0,
+              "comprometido": 0,
+              "obligado": 0,
+              "pagado": 0
+            },
+            {
+              "cons_ppt": "4980",
+              "nombre": "020104 Fortalecimiento de la Educación técnica, tecnológica y superior",
+              "definitivo": 924930000,
+              "reservado": 849004703,
+              "comprometido": 849004703,
+              "obligado": 621845949,
+              "pagado": 621845949
+            },
+            {
+              "cons_ppt": "4977",
+              "nombre": "020103 Fortalecimiento de Infraestructura y Ambientes de Aprendizaje para el bienestar",
+              "definitivo": 11473939096.24,
+              "reservado": 11473939096.24,
+              "comprometido": 10287939096,
+              "obligado": 4428360747,
+              "pagado": 1948408561
+            },
+            {
+              "cons_ppt": "4978",
+              "nombre": "020103 Fortalecimiento de Infraestructura y Ambientes de Aprendizaje para el bienestar",
+              "definitivo": 0,
+              "reservado": 0,
+              "comprometido": 0,
+              "obligado": 0,
+              "pagado": 0
+            }
+          ],
+          "calculos": {
+            "pct_reservado": 91.03462914491269,
+            "pct_comprometido": 87.79474796570456,
+            "pct_obligado": 34.19492600405224,
+            "pct_pagado": 28.627043574487754,
+            "sin_reservar": 9449028627.850006,
+            "sin_comprometer": 3414664101.2400055,
+            "sin_obligar": 56491388962
+          }
+        }
+      },
+      "calculos": {
+        "pct_reservado": 91.03462914491269,
+        "pct_comprometido": 87.79474796570456,
+        "pct_obligado": 34.19492600405224,
+        "pct_pagado": 28.627043574487754,
+        "sin_reservar": 9449028627.850006,
+        "sin_comprometer": 3414664101.2400055,
+        "sin_obligar": 56491388962
+      }
+    },
+    "RENDIMIENTOS O RECURSOS DEL BALANCE DE PRESTACION DEL SERVICIO": {
+      "totales": {
+        "definitivo": 7276870922.42,
+        "reservado": 740190128,
+        "comprometido": 740190128,
+        "obligado": 740190128,
+        "pagado": 740190128
+      },
+      "subgrupos": {
+        "RENDIMIENTOS O RECURSOS DEL BALANCE DE PRESTACION DEL SERVICIO": {
+          "totales": {
+            "definitivo": 7276870922.42,
+            "reservado": 740190128,
+            "comprometido": 740190128,
+            "obligado": 740190128,
+            "pagado": 740190128
+          },
+          "rubros": [
+            {
+              "cons_ppt": "6808",
+              "nombre": "Sueldo Docentes Con Situación de Fondos",
+              "definitivo": 1127072995.42,
+              "reservado": 0,
+              "comprometido": 0,
+              "obligado": 0,
+              "pagado": 0
+            },
+            {
+              "cons_ppt": "6809",
+              "nombre": "Sueldo Docentes Con Situación de Fondos",
+              "definitivo": 91393157,
+              "reservado": 0,
+              "comprometido": 0,
+              "obligado": 0,
+              "pagado": 0
+            },
+            {
+              "cons_ppt": "4915",
+              "nombre": "Aportes Patronales previsión social SSF Vig-2024",
+              "definitivo": 6058404770,
+              "reservado": 740190128,
+              "comprometido": 740190128,
+              "obligado": 740190128,
+              "pagado": 740190128
+            }
+          ],
+          "calculos": {
+            "pct_reservado": 10.171818847569195,
+            "pct_comprometido": 10.171818847569195,
+            "pct_obligado": 10.171818847569195,
+            "pct_pagado": 10.171818847569195,
+            "sin_reservar": 6536680794.42,
+            "sin_comprometer": 0,
+            "sin_obligar": 0
+          }
+        }
+      },
+      "calculos": {
+        "pct_reservado": 10.171818847569195,
+        "pct_comprometido": 10.171818847569195,
+        "pct_obligado": 10.171818847569195,
+        "pct_pagado": 10.171818847569195,
+        "sin_reservar": 6536680794.42,
+        "sin_comprometer": 0,
+        "sin_obligar": 0
+      }
+    },
+    "CALIDAD MATRICULA": {
+      "totales": {
+        "definitivo": 4069924287.58,
+        "reservado": 3022717570.58,
+        "comprometido": 1712141839.8,
+        "obligado": 1137955391.8,
+        "pagado": 1095507259
+      },
+      "subgrupos": {
+        "CALIDAD MATRICULA": {
+          "totales": {
+            "definitivo": 4069924287.58,
+            "reservado": 3022717570.58,
+            "comprometido": 1712141839.8,
+            "obligado": 1137955391.8,
+            "pagado": 1095507259
+          },
+          "rubros": [
+            {
+              "cons_ppt": "4961",
+              "nombre": "Dotación Institucional de Material y medios pedagógicos",
+              "definitivo": 85600000,
+              "reservado": 0,
+              "comprometido": 0,
+              "obligado": 0,
+              "pagado": 0
+            },
+            {
+              "cons_ppt": "4962",
+              "nombre": "Mantenimiento de Infraestructura Educativa",
+              "definitivo": 587806717,
+              "reservado": 0,
+              "comprometido": 0,
+              "obligado": 0,
+              "pagado": 0
+            },
+            {
+              "cons_ppt": "5709",
+              "nombre": "020103 Mantenimiento de Infraestructura Educativa",
+              "definitivo": 1655693707,
+              "reservado": 1655693707,
+              "comprometido": 1655693707,
+              "obligado": 1081507259,
+              "pagado": 1081507259
+            },
+            {
+              "cons_ppt": "6810",
+              "nombre": "020103 Mantenimiento de Infraestructura Educativa",
+              "definitivo": 0,
+              "reservado": 0,
+              "comprometido": 0,
+              "obligado": 0,
+              "pagado": 0
+            },
+            {
+              "cons_ppt": "6811",
+              "nombre": "020103 Mantenimiento de Infraestructura Educativa",
+              "definitivo": 0,
+              "reservado": 0,
+              "comprometido": 0,
+              "obligado": 0,
+              "pagado": 0
+            },
+            {
+              "cons_ppt": "4968",
+              "nombre": "Fortalecimiento de estrategias para la permanencia escolar",
+              "definitivo": 58850000,
+              "reservado": 0,
+              "comprometido": 0,
+              "obligado": 0,
+              "pagado": 0
+            },
+            {
+              "cons_ppt": "4969",
+              "nombre": "Servicios públicos instituciones educativas",
+              "definitivo": 363800000,
+              "reservado": 363800000,
+              "comprometido": 42448132.8,
+              "obligado": 42448132.8,
+              "pagado": 0
+            },
+            {
+              "cons_ppt": "4975",
+              "nombre": "Capacitacion de docentes y directivos docentes",
+              "definitivo": 304950000,
+              "reservado": 0,
+              "comprometido": 0,
+              "obligado": 0,
+              "pagado": 0
+            },
+            {
+              "cons_ppt": "5642",
+              "nombre": "RB SGP-EDUCACION-CALIDAD POR MATRICULA OFICIAL",
+              "definitivo": 999548929.61,
+              "reservado": 989548929.61,
+              "comprometido": 14000000,
+              "obligado": 14000000,
+              "pagado": 14000000
+            },
+            {
+              "cons_ppt": "5645",
+              "nombre": "RB RF SGP - EDUCACION-CALIDAD POR MATRICULA OFICIAL",
+              "definitivo": 13674933.97,
+              "reservado": 13674933.97,
+              "comprometido": 0,
+              "obligado": 0,
+              "pagado": 0
+            },
+            {
+              "cons_ppt": "5828",
+              "nombre": "RF SGP- Calidad Matricula",
+              "definitivo": 0,
+              "reservado": 0,
+              "comprometido": 0,
+              "obligado": 0,
+              "pagado": 0
+            }
+          ],
+          "calculos": {
+            "pct_reservado": 74.26962658259487,
+            "pct_comprometido": 42.068149646539226,
+            "pct_obligado": 27.96011206578574,
+            "pct_pagado": 26.917140998006005,
+            "sin_reservar": 1047206717.0,
+            "sin_comprometer": 1310575730.78,
+            "sin_obligar": 574186448.0
+          }
+        }
+      },
+      "calculos": {
+        "pct_reservado": 74.26962658259487,
+        "pct_comprometido": 42.068149646539226,
+        "pct_obligado": 27.96011206578574,
+        "pct_pagado": 26.917140998006005,
+        "sin_reservar": 1047206717.0,
+        "sin_comprometer": 1310575730.78,
+        "sin_obligar": 574186448.0
+      }
+    },
+    "CALIDAD GRATUIDAD": {
+      "totales": {
+        "definitivo": 2676056094,
+        "reservado": 2310562061,
+        "comprometido": 2310562061,
+        "obligado": 2310562061,
+        "pagado": 2310562061
+      },
+      "subgrupos": {
+        "CALIDAD GRATUIDAD": {
+          "totales": {
+            "definitivo": 2676056094,
+            "reservado": 2310562061,
+            "comprometido": 2310562061,
+            "obligado": 2310562061,
+            "pagado": 2310562061
+          },
+          "rubros": [
+            {
+              "cons_ppt": "4970",
+              "nombre": "Fondos de Servicios Educativos de las Instituciones de Preescolar, básica y Media",
+              "definitivo": 2676056094,
+              "reservado": 2310562061,
+              "comprometido": 2310562061,
+              "obligado": 2310562061,
+              "pagado": 2310562061
+            }
+          ],
+          "calculos": {
+            "pct_reservado": 86.34206383717157,
+            "pct_comprometido": 86.34206383717157,
+            "pct_obligado": 86.34206383717157,
+            "pct_pagado": 86.34206383717157,
+            "sin_reservar": 365494033,
+            "sin_comprometer": 0,
+            "sin_obligar": 0
+          }
+        }
+      },
+      "calculos": {
+        "pct_reservado": 86.34206383717157,
+        "pct_comprometido": 86.34206383717157,
+        "pct_obligado": 86.34206383717157,
+        "pct_pagado": 86.34206383717157,
+        "sin_reservar": 365494033,
+        "sin_comprometer": 0,
+        "sin_obligar": 0
+      }
+    },
+    "SGP - PGN - PAE": {
+      "totales": {
+        "definitivo": 4398766265.65,
+        "reservado": 4336250765.51,
+        "comprometido": 4106238815.51,
+        "obligado": 3897521404.51,
+        "pagado": 3897521404.51
+      },
+      "subgrupos": {
+        "SGP - PGN - PAE": {
+          "totales": {
+            "definitivo": 4398766265.65,
+            "reservado": 4336250765.51,
+            "comprometido": 4106238815.51,
+            "obligado": 3897521404.51,
+            "pagado": 3897521404.51
+          },
+          "rubros": [
+            {
+              "cons_ppt": "6821",
+              "nombre": "ECB RES 295 NOV 05 2021 MINEDUCACIÓN PROGRAMA DE ALIMENTACIÓN ESCOLAR PAE",
+              "definitivo": 0.89,
+              "reservado": 0,
+              "comprometido": 0,
+              "obligado": 0,
+              "pagado": 0
+            },
+            {
+              "cons_ppt": "6807",
+              "nombre": "020106 Mejoramiento de la cobertura Educativa PAE",
+              "definitivo": 1352967.42,
+              "reservado": 0,
+              "comprometido": 0,
+              "obligado": 0,
+              "pagado": 0
+            },
+            {
+              "cons_ppt": "6806",
+              "nombre": "020106 Mejoramiento de la cobertura Educativa PAE",
+              "definitivo": 311697781.34,
+              "reservado": 254512256.51,
+              "comprometido": 254512256.51,
+              "obligado": 254512256.51,
+              "pagado": 254512256.51
+            },
+            {
+              "cons_ppt": "4983",
+              "nombre": "020106 Mejoramiento de la cobertura Educativa PAE",
+              "definitivo": 452393559,
+              "reservado": 452393559,
+              "comprometido": 452393559,
+              "obligado": 278624292,
+              "pagado": 278624292
+            },
+            {
+              "cons_ppt": "5635",
+              "nombre": "RB RF SGP - ASIGNACION ESPECIAL-PROGRAMAS DE ALIMENTACION ESCOLAR",
+              "definitivo": 0,
+              "reservado": 0,
+              "comprometido": 0,
+              "obligado": 0,
+              "pagado": 0
+            },
+            {
+              "cons_ppt": "5648",
+              "nombre": "ECB RES 295 NOV 05 2021 MINEDUCACIÓN PROGRAMA DE ALIMENTACIÓN ESCOLAR PAE",
+              "definitivo": 0,
+              "reservado": 0,
+              "comprometido": 0,
+              "obligado": 0,
+              "pagado": 0
+            },
+            {
+              "cons_ppt": "5651",
+              "nombre": "RES 388 DEL 17 NOV DE 2023 PROGR ALIMENTAC ESCOLAR PAE",
+              "definitivo": 3629344950,
+              "reservado": 3629344950,
+              "comprometido": 3399333000,
+              "obligado": 3364384856,
+              "pagado": 3364384856
+            },
+            {
+              "cons_ppt": "5829",
+              "nombre": "RF Recursos SGP Alimentación Escolar",
+              "definitivo": 0,
+              "reservado": 0,
+              "comprometido": 0,
+              "obligado": 0,
+              "pagado": 0
+            },
+            {
+              "cons_ppt": "6882",
+              "nombre": "020106 RF Mejoramiento de la cobertura Educativa PAE",
+              "definitivo": 856052,
+              "reservado": 0,
+              "comprometido": 0,
+              "obligado": 0,
+              "pagado": 0
+            },
+            {
+              "cons_ppt": "6883",
+              "nombre": "020106 RF LI Mejoramiento de la cobertura Educativa PAE",
+              "definitivo": 3120955,
+              "reservado": 0,
+              "comprometido": 0,
+              "obligado": 0,
+              "pagado": 0
+            }
+          ],
+          "calculos": {
+            "pct_reservado": 98.5787946809499,
+            "pct_comprometido": 93.349784178706,
+            "pct_obligado": 88.60487621144537,
+            "pct_pagado": 88.60487621144537,
+            "sin_reservar": 62515500.13999939,
+            "sin_comprometer": 230011950.0,
+            "sin_obligar": 208717411.0
+          }
+        }
+      },
+      "calculos": {
+        "pct_reservado": 98.5787946809499,
+        "pct_comprometido": 93.349784178706,
+        "pct_obligado": 88.60487621144537,
+        "pct_pagado": 88.60487621144537,
+        "sin_reservar": 62515500.13999939,
+        "sin_comprometer": 230011950.0,
+        "sin_obligar": 208717411.0
+      }
+    },
+    "PRIMERA INFANCIA": {
+      "totales": {
+        "definitivo": 2727099272.48,
+        "reservado": 1555487503,
+        "comprometido": 1555487503,
+        "obligado": 0,
+        "pagado": 0
+      },
+      "subgrupos": {
+        "PRIMERA INFANCIA": {
+          "totales": {
+            "definitivo": 2727099272.48,
+            "reservado": 1555487503,
+            "comprometido": 1555487503,
+            "obligado": 0,
+            "pagado": 0
+          },
+          "rubros": [
+            {
+              "cons_ppt": "6848",
+              "nombre": "010101 Acompañamiento en la atención a la primera infancia",
+              "definitivo": 2726732504.85,
+              "reservado": 1555487503,
+              "comprometido": 1555487503,
+              "obligado": 0,
+              "pagado": 0
+            },
+            {
+              "cons_ppt": "5636",
+              "nombre": "RB RF SGP - ASIGNACION-ATENCION INTEGRAL DE LA PRIMERA INFANCIA",
+              "definitivo": 2195.65,
+              "reservado": 0,
+              "comprometido": 0,
+              "obligado": 0,
+              "pagado": 0
+            },
+            {
+              "cons_ppt": "5637",
+              "nombre": "RB SGP-ASIGNACION-ATENCION INTEGRAL DE LA PRIMERA INFANCIA",
+              "definitivo": 364571.98,
+              "reservado": 0,
+              "comprometido": 0,
+              "obligado": 0,
+              "pagado": 0
+            }
+          ],
+          "calculos": {
+            "pct_reservado": 57.03816940941257,
+            "pct_comprometido": 57.03816940941257,
+            "pct_obligado": 0.0,
+            "pct_pagado": 0.0,
+            "sin_reservar": 1171611769.48,
+            "sin_comprometer": 0,
+            "sin_obligar": 1555487503
+          }
+        }
+      },
+      "calculos": {
+        "pct_reservado": 57.03816940941257,
+        "pct_comprometido": 57.03816940941257,
+        "pct_obligado": 0.0,
+        "pct_pagado": 0.0,
+        "sin_reservar": 1171611769.48,
+        "sin_comprometer": 0,
+        "sin_obligar": 1555487503
+      }
+    },
+    "INFRAESTRUCTURA": {
+      "totales": {
+        "definitivo": 476571428.8,
+        "reservado": 0,
+        "comprometido": 0,
+        "obligado": 0,
+        "pagado": 0
+      },
+      "subgrupos": {
+        "INFRAESTRUCTURA": {
+          "totales": {
+            "definitivo": 476571428.8,
+            "reservado": 0,
+            "comprometido": 0,
+            "obligado": 0,
+            "pagado": 0
+          },
+          "rubros": [
+            {
+              "cons_ppt": "6814",
+              "nombre": "RF CI 1878 NOV 10 VF 2022 MINIST INTERIOR FONSECON SACUDETE AL PARQUE TIPO 2",
+              "definitivo": 4914169.39,
+              "reservado": 0,
+              "comprometido": 0,
+              "obligado": 0,
+              "pagado": 0
+            },
+            {
+              "cons_ppt": "6815",
+              "nombre": "020103 CI 1878 NOV 10 VF 2022 MINIST INTERIOR FONSECON SACUDETE AL PARQUE TIPO 2",
+              "definitivo": 42607852.67,
+              "reservado": 0,
+              "comprometido": 0,
+              "obligado": 0,
+              "pagado": 0
+            },
+            {
+              "cons_ppt": "5647",
+              "nombre": "ECB RF CI 1878 NOV 10 VF 2022 MINIST INTERIOR FONSECON SACUDETE AL PARQUE TIPO 2",
+              "definitivo": 0,
+              "reservado": 0,
+              "comprometido": 0,
+              "obligado": 0,
+              "pagado": 0
+            },
+            {
+              "cons_ppt": "5652",
+              "nombre": "DC CI 1878 NOV 10 VF 2022 MINIST INTERIOR FONSECON SACUDETE AL PARQUE TIPO 2",
+              "definitivo": 429049406.74,
+              "reservado": 0,
+              "comprometido": 0,
+              "obligado": 0,
+              "pagado": 0
+            }
+          ],
+          "calculos": {
+            "pct_reservado": 0.0,
+            "pct_comprometido": 0.0,
+            "pct_obligado": 0.0,
+            "pct_pagado": 0.0,
+            "sin_reservar": 476571428.8,
+            "sin_comprometer": 0,
+            "sin_obligar": 0
+          }
+        }
+      },
+      "calculos": {
+        "pct_reservado": 0.0,
+        "pct_comprometido": 0.0,
+        "pct_obligado": 0.0,
+        "pct_pagado": 0.0,
+        "sin_reservar": 476571428.8,
+        "sin_comprometer": 0,
+        "sin_obligar": 0
+      }
+    },
+    "VIGENCIAS ANTERIORES": {
+      "totales": {
+        "definitivo": 13094694.100000001,
+        "reservado": 4974531.08,
+        "comprometido": 0,
+        "obligado": 0,
+        "pagado": 0
+      },
+      "subgrupos": {
+        "VIGENCIAS ANTERIORES": {
+          "totales": {
+            "definitivo": 13094694.100000001,
+            "reservado": 4974531.08,
+            "comprometido": 0,
+            "obligado": 0,
+            "pagado": 0
+          },
+          "rubros": [
+            {
+              "cons_ppt": "6820",
+              "nombre": "ECB RF COFINANCIACIÓN DEL MEN",
+              "definitivo": 727396.0700000001,
+              "reservado": 0,
+              "comprometido": 0,
+              "obligado": 0,
+              "pagado": 0
+            },
+            {
+              "cons_ppt": "6818",
+              "nombre": "ECB APORTES NACIONALES (CONVENIOS ANTIGUOS)",
+              "definitivo": 7392766.95,
+              "reservado": 0,
+              "comprometido": 0,
+              "obligado": 0,
+              "pagado": 0
+            },
+            {
+              "cons_ppt": "5638",
+              "nombre": "RB OTROS COMPUTADORES EDUC VIG 2016",
+              "definitivo": 4910052.08,
+              "reservado": 4910052.08,
+              "comprometido": 0,
+              "obligado": 0,
+              "pagado": 0
+            },
+            {
+              "cons_ppt": "5650",
+              "nombre": "ECB RF COFINANCIACIÓN DEL MEN",
+              "definitivo": 0,
+              "reservado": 0,
+              "comprometido": 0,
+              "obligado": 0,
+              "pagado": 0
+            },
+            {
+              "cons_ppt": "5830",
+              "nombre": "R.F. OTROS C.I COMPUT. PARA EDU VIG 2016",
+              "definitivo": 64479,
+              "reservado": 64479,
+              "comprometido": 0,
+              "obligado": 0,
+              "pagado": 0
+            }
+          ],
+          "calculos": {
+            "pct_reservado": 37.988906361699584,
+            "pct_comprometido": 0.0,
+            "pct_obligado": 0.0,
+            "pct_pagado": 0.0,
+            "sin_reservar": 8120163.020000001,
+            "sin_comprometer": 4974531.08,
+            "sin_obligar": 0
+          }
+        }
+      },
+      "calculos": {
+        "pct_reservado": 37.988906361699584,
+        "pct_comprometido": 0.0,
+        "pct_obligado": 0.0,
+        "pct_pagado": 0.0,
+        "sin_reservar": 8120163.020000001,
+        "sin_comprometer": 4974531.08,
+        "sin_obligar": 0
+      }
+    }
+  }
+}
