@@ -1,0 +1,118 @@
+================================================================================
+  DASHBOARD SECRETARIA DE EDUCACION - RIONEGRO 2026
+  Listo para publicar en Netlify
+================================================================================
+
+FECHA GENERACION: 22 de septiembre 2026, 13:40 UTC
+
+================================================================================
+CONTENIDO PUBLICABLE (carpeta: publicar/)
+================================================================================
+
+[✓] index.html                47 KB   Dashboard interactivo
+[✓] datos.json                42 KB   Presupuesto de egreso (127 rubros)
+[✓] contratos.json            41 KB   22 contratos con verificacion CDP
+[✓] _headers                  66 B    Configuracion Netlify (no-cache)
+[✓] assets/                   -       Logo horizontal Rionegro
+
+================================================================================
+VERIFICACION DE DATOS
+================================================================================
+
+Presupuesto:
+  • Corte: 15 de septiembre 2026
+  • Rubros totales: 127 (Educacion)
+  • Componentes: 9
+  • Definitivo: $219.806.760.754
+
+Contratos:
+  • Total: 22 contratos
+  • Cruce completo: 14 contratos (63.6%)
+  • Cruce parcial: 8 contratos (36.4%)
+  • CRP total: $99.073.602.664
+
+Verificacion por CDP en columna "cdps":
+  • CDP verificados en "cdps": 40 de 54 lineas (74.1%)
+  • Fallback a codigo: 14 de 54 lineas (25.9%)
+  • CRP verificado en Hacienda: $56.318.866.250 (56.8%)
+  • CRP por codigo presupuestal: $29.346.872.200 (29.6%)
+  • Vigencias futuras: $13.141.714.369 (13.3%)
+  • Sin CDP: $266.149.845 (0.3%)
+
+================================================================================
+PASOS PARA PUBLICAR EN NETLIFY
+================================================================================
+
+OPCION 1: Drag & Drop (ultra rapido)
+  1. Ir a https://app.netlify.com/drop
+  2. Arrastrar carpeta "publicar/" al navegador
+  3. Esperar a que suba
+  4. ¡Listo! Se genera URL automaticamente
+
+OPCION 2: GitHub + Netlify (recomendado, actualiza automatico)
+  1. Crear repositorio en https://github.com/new
+  2. Push de la carpeta "publicar/" a GitHub
+  3. Conectar GitHub a Netlify (New site from Git)
+  4. Elegir "publicar" como directorio de publicacion
+  5. Deploy
+
+Ver instrucciones detalladas en: NETLIFY_DEPLOY.md
+
+================================================================================
+DATOS OCULTOS EN VERSION PUBLICA
+================================================================================
+
+[✓] Contratistas: OCULTOS (privado)
+[✓] Responsables: NO INCLUIDOS
+[X] Numeros de contrato: VISIBLES (publicos)
+[X] CDP y CRP: VISIBLES (presupuesto publico)
+[X] Rubros presupuestales: VISIBLES (presupuesto publico)
+
+Para cambiar (ej: mostrar contratistas):
+  Editar: SECRETARIA_EDUCACION/publicar_dashboard.py
+  Linea 10: OCULTAR_CONTRATISTAS_EN_PUBLICO = False
+  Ejecutar: python publicar_dashboard.py
+  Re-publicar
+
+================================================================================
+ACTUALIZACIONES FUTURAS
+================================================================================
+
+Para actualizar el dashboard cuando haya datos nuevos:
+
+  1. Copiar nuevo Excel de Hacienda a SECRETARIA_EDUCACION/entradas/
+  2. Ejecutar: python SECRETARIA_EDUCACION/publicar_dashboard.py
+  3. Los archivos en "publicar/" se actualizan automaticamente
+  4. Si usa GitHub: git add publicar/ && git commit && git push
+  5. Netlify redeploy automatico
+
+Con GitHub Actions (ver NETLIFY_DEPLOY.md), puede automatizar esto diariamente.
+
+================================================================================
+DOCUMENTACION
+================================================================================
+
+[✓] CRUCE_POR_CDPS.md          Explicacion tecnica del cruce por "cdps"
+[✓] NETLIFY_DEPLOY.md          Guia completa para publicar en Netlify
+[✓] SECRETARIA_EDUCACION/README.md (si existe)
+
+================================================================================
+SIGUIENTE PASO
+================================================================================
+
+Ejecutar uno de estos comandos:
+
+  Opcion 1 (Drag & Drop):
+    -> Ir a https://app.netlify.com/drop
+    -> Arrastrar carpeta publicar/
+    -> Listo!
+
+  Opcion 2 (GitHub + Netlify):
+    -> git push a GitHub
+    -> Conectar en https://app.netlify.com
+    -> Elegir publicar/ como directorio
+    -> Deploy!
+
+================================================================================
+Generado por: Claude Code / extractor_dashboard.py + extractor_contratos.py
+================================================================================

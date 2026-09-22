@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Informe de Ejecución Presupuestal - Secretaría de Educación</title>
+<style>
+:root{
+  /* Paleta oficial - Manual de Identidad Visual Alcaldía de Rionegro 2024 */
+  --guinda:#780001; --rojo:#A80506; --rojo-vivo:#DA121A; --crema:#FFF7EA; --oro:#D8A563; --azul:#144E76;
+  --azul-2:#007494; --verde:#2B756B; --oro-osc:#A87C2F;
+  --ink:#1b2733; --muted:#5d6b78; --line:#e6e0d4; --bg:#ffffff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.45}
+.wrap{max-width:1500px;margin:0 auto;padding:0 28px 28px}
+.tricolor{height:5px;background:linear-gradient(90deg,var(--azul) 0 25%,var(--oro) 25% 50%,var(--guinda) 50% 75%,var(--rojo-vivo) 75%)}
+
+/* Encabezado */
+header{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;padding:18px 0 10px}
+header .logo img{height:66px;display:block}
+header .titulo{text-align:center}
+header .sec{font-size:20px;color:var(--azul);font-weight:400;letter-spacing:.2px}
+header h1{font-size:34px;line-height:1.1;color:var(--azul);font-weight:800;letter-spacing:-.3px}
+header .sub{font-size:13px;letter-spacing:.35em;color:var(--guinda);font-weight:700;margin-top:4px}
+header .corte{display:inline-block;margin-top:6px;padding:3px 16px;border-radius:999px;background:var(--crema);font-size:14px;color:var(--ink)}
+header .lema{justify-self:end;font-family:Georgia,"Times New Roman",serif;font-style:italic;color:var(--azul);font-size:19px;text-align:right}
+header .lema i{display:block;height:3px;margin-top:5px;background:linear-gradient(90deg,var(--azul),var(--oro),var(--rojo-vivo));border-radius:2px}
+
+/* Barra de selección */
+.barra{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;padding:12px 16px;margin:8px 0 18px;background:var(--crema);border:1px solid var(--line);border-radius:12px}
+.barra label{font-size:12px;font-weight:700;color:var(--guinda);text-transform:uppercase;letter-spacing:.06em}
+.barra select,.barra input{font:inherit;font-size:14px;padding:7px 10px;border:1px solid #d8cdb8;border-radius:8px;background:#fff;color:var(--ink);max-width:340px}
+.barra input{min-width:220px}
+.barra button{font:inherit;font-size:13px;font-weight:600;padding:7px 14px;border-radius:8px;border:1px solid var(--azul);background:var(--azul);color:#fff;cursor:pointer}
+.barra button.sec{background:#fff;color:var(--azul)}
+.barra button:hover{filter:brightness(1.1)}
+.crumb{font-size:13px;color:var(--muted);margin-left:auto}
+.crumb b{color:var(--azul)}
+
+/* Tarjetas */
+.kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-bottom:18px}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px;box-shadow:0 1px 3px rgba(20,78,118,.08);position:relative;overflow:hidden}
+.card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--acc,var(--azul))}
+.kpi .cab{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.kpi .n{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:14px;color:var(--acc);background:color-mix(in srgb,var(--acc) 14%,#fff)}
+.kpi .et{font-size:12px;font-weight:800;letter-spacing:.04em;color:var(--ink)}
+.kpi .val{font-size:clamp(17px,1.7vw,24px);font-weight:800;color:var(--ink);white-space:nowrap;font-variant-numeric:tabular-nums}
+.kpi .fila{display:flex;align-items:center;gap:10px;margin:8px 0 6px}
+.kpi .bar{flex:1;height:9px;border-radius:9px;background:#eee9df;overflow:hidden}
+.kpi .bar i{display:block;height:100%;background:var(--acc);border-radius:9px;transition:width .5s}
+.kpi .pct{font-weight:700;font-size:14px;font-variant-numeric:tabular-nums}
+.kpi .desc{font-size:12px;color:var(--muted)}
+
+/* Paneles */
+.grid3{display:grid;grid-template-columns:1.05fr 1.15fr 1.2fr;gap:14px;margin-bottom:18px}
+.panel{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.panel h2{font-size:17px;color:var(--azul);font-weight:800;margin-bottom:2px}
+.panel .nota{font-size:11px;color:var(--muted);margin-bottom:10px}
+.brechas{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.brecha{border:1px solid #f0d9d0;background:#fff8f5;border-top:4px solid var(--rojo);border-radius:10px;padding:10px;text-align:center}
+.brecha h3{font-size:13px;color:var(--ink);margin-bottom:6px}
+.brecha .v{font-size:13px;font-weight:800;color:var(--guinda);font-variant-numeric:tabular-nums;word-break:break-all}
+.brecha .p{font-size:22px;font-weight:800;color:var(--rojo);margin:2px 0}
+.brecha .d{font-size:11px;color:var(--muted)}
+svg text{font-family:inherit}
+
+/* Lectura ejecutiva */
+.lectura{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px}
+.lectura .card{display:flex;gap:12px;align-items:flex-start;--acc:var(--oro)}
+.lectura .ic{flex:none;width:34px;height:34px;border-radius:9px;background:var(--crema);color:var(--oro-osc);display:grid;place-items:center;font-weight:800}
+.lectura p{font-size:14px}
+.lectura b{color:var(--azul)}
+h2.sec{font-size:19px;color:var(--azul);margin:6px 0 8px;display:flex;align-items:baseline;justify-content:space-between}
+h2.sec small{font-size:12px;color:var(--muted);font-weight:400}
+
+/* Tabla jerárquica */
+.tabla{border:1px solid var(--line);border-radius:12px;overflow:auto;background:#fff}
+table{width:100%;border-collapse:collapse;font-size:13px;min-width:1400px}
+thead th{position:sticky;top:0;background:var(--azul);color:#fff;text-align:right;padding:9px 10px;font-weight:700;line-height:1.2}
+thead th:first-child{text-align:left}
+td{padding:7px 10px;border-bottom:1px solid #efe9dc;text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+td.n{text-align:left;white-space:normal;min-width:340px}
+tr.nodo{cursor:pointer}
+tr.nodo:hover td{background:rgba(20,78,118,.06)}
+tr.sel td{outline:2px solid var(--rojo);outline-offset:-2px;background:rgba(216,165,99,.22)!important}
+tr.l1 td{font-weight:700;color:#111}
+tr.l2 td.n{padding-left:34px;font-weight:600}
+tr.l3 td.n{padding-left:58px}
+tr.l2 td:first-child{border-left:6px solid var(--cc)}
+tr.l3 td:first-child{border-left:6px solid var(--cc)}
+.chev{display:inline-block;width:20px;color:var(--azul);font-size:11px;user-select:none}
+.sm{display:block;font-size:11px;color:var(--muted);font-weight:400;margin-left:20px}
+tr.total td{background:#e3eaf1;font-weight:800;color:var(--azul);border-top:2px solid var(--azul)}
+.pbar{display:inline-block;width:46px;height:6px;border-radius:6px;background:#e6e0d4;margin-right:6px;vertical-align:middle;overflow:hidden}
+.pbar i{display:block;height:100%;background:var(--azul)}
+
+footer{margin-top:18px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:12px;color:var(--muted);align-items:center}
+footer .lema2{font-family:Georgia,serif;font-style:italic;color:var(--azul)}
+.val-ok{color:var(--verde);font-weight:700}.val-bad{color:var(--rojo);font-weight:700}
+.err{padding:30px;color:var(--rojo);font-weight:700}
+
+@media (max-width:1150px){.kpis{grid-template-columns:repeat(2,1fr)}.grid3{grid-template-columns:1fr}.lectura{grid-template-columns:repeat(2,1fr)}header{grid-template-columns:1fr;text-align:center}header .logo img{margin:0 auto}header .lema{justify-self:center;text-align:center}}
+@media (max-width:640px){.wrap{padding:0 16px 20px}.kpis,.lectura{grid-template-columns:1fr}.brechas{grid-template-columns:1fr}header h1{font-size:26px}.crumb{margin-left:0;width:100%}}
+/* ===== Pestañas ===== */
+.tabs{display:flex;gap:6px;margin:4px 0 12px;border-bottom:2px solid var(--line)}
+.tabs button{font:inherit;font-size:14px;font-weight:700;padding:9px 20px;border:0;border-bottom:4px solid transparent;margin-bottom:-2px;background:none;color:var(--muted);cursor:pointer;border-radius:8px 8px 0 0}
+.tabs button:hover{color:var(--azul);background:var(--crema)}
+.tabs button.on{color:var(--azul);border-bottom-color:var(--rojo-vivo)}
+
+/* ===== Vista contratos ===== */
+.barra.c select{max-width:260px}
+.badge{display:inline-block;padding:2px 9px;border-radius:999px;font-size:11px;font-weight:700;white-space:nowrap;border:1px solid transparent}
+.b-ok{background:#e4f3ef;color:#1c5f55;border-color:#b9ddd5}
+.b-par{background:#fff2d9;color:#8a5a00;border-color:#f0d497}
+.b-ver{background:#fde6e6;color:#a80506;border-color:#f4b9b9}
+
+.b-cod{background:#fdf1dd;color:#8a5a00;border-color:#e3c489}
+.b-cdps{background:#e8f5e9;color:#2d6a4f;border-color:#b9ddd5}
+.b-gris{background:#eceff2;color:#4c5b68;border-color:#d5dbe1}
+.badge.check::after{content:" ✓";font-weight:900;opacity:.7}
+.badge.cdps-info{font-size:10px;opacity:.8;margin-left:4px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px}
+.chip{background:#fff;border:1px solid var(--line);border-radius:10px;padding:8px 12px;font-size:13px;display:flex;gap:8px;align-items:center;cursor:pointer}
+.chip:hover{border-color:var(--azul)}
+.chip.on{outline:2px solid var(--rojo);outline-offset:-2px}
+.chip b{font-size:16px;color:var(--azul)}
+.pendiente{border:1px dashed #d8a563;background:var(--crema);border-radius:12px;padding:14px 16px;font-size:13px;line-height:1.5}
+.pendiente h3{font-size:14px;color:var(--guinda);margin-bottom:4px}
+.pendiente .prog{height:8px;border-radius:8px;background:#eadfc8;margin:8px 0;overflow:hidden}
+.pendiente .prog i{display:block;height:100%;background:var(--oro)}
+.avisos{border:1px solid #f0d497;background:#fffaf0;border-radius:12px;padding:10px 14px;font-size:12.5px;color:#5a4a1a;margin:0 0 14px;line-height:1.55}
+.avisos b{color:#8a5a00}
+table.ct{min-width:1250px}
+table.ct td.n{min-width:250px}
+table.ct td.t{text-align:left;white-space:normal;min-width:150px;max-width:230px;font-size:12px}
+table.ct tr.k td{font-weight:600}
+table.ct .mut{color:var(--muted);font-weight:400}
+table.ct .sub2{display:block;font-weight:400;font-size:11px;color:var(--muted);margin-left:20px}
+tr.det td{padding:0;background:#faf8f3;border-bottom:1px solid var(--line);white-space:normal}
+tr.det table{min-width:0;font-size:12px;margin:6px 0 10px 24px;width:calc(100% - 34px);background:#fff;border:1px solid var(--line)}
+tr.det th{position:static;background:#e9eef3;color:var(--azul);font-size:11px;padding:6px 8px}
+tr.det td.l{text-align:left;white-space:normal;padding:6px 8px;background:#fff}
+tr.det td.r{padding:6px 8px;background:#fff}
+.sug{font-style:italic;color:#7a5a12}
+.legend-c{font-size:11px;color:var(--muted);margin:6px 0 0}
+@media (max-width:640px){.tabs button{padding:9px 12px;font-size:13px}}
+
+</style>
+</head>
+<body>
+<div class="tricolor"></div>
+<div class="wrap">
+  <header>
+    <div class="logo"><img src="assets/logo_horizontal.webp" alt="Alcaldía de Rionegro - Departamento de Antioquia"></div>
+    <div class="titulo">
+      <div class="sec">Secretaría de Educación</div>
+      <h1 id="tituloVista">Informe de Ejecución Presupuestal</h1>
+      <div class="sub">RESUMEN EJECUTIVO</div>
+      <div class="corte">Corte: <b id="corte">…</b></div>
+    </div>
+    <div class="lema">Rionegro, ciudad de oportunidades<i></i></div>
+  </header>
+
+  <nav class="tabs">
+    <button class="on" data-tab="presupuesto">Presupuesto</button>
+    <button data-tab="contratos">Contratos</button>
+  </nav>
+
+  <div id="vPres">
+  <div class="barra">
+    <label for="selComp">Seleccionar nivel</label>
+    <select id="selComp" aria-label="Componente"></select>
+    <select id="selSub" aria-label="Subgrupo" hidden></select>
+    <button id="btnTodos">Ver TODOS</button>
+    <input id="buscar" type="search" placeholder="Buscar rubro o cons_ppt…">
+    <button class="sec" id="btnRef" title="Volver a leer el Excel">Actualizar desde Excel</button>
+    <span class="crumb" id="crumb"></span>
+  </div>
+
+  <section class="kpis" id="kpis"></section>
+
+  <section class="grid3">
+    <div class="panel"><h2>Ejecución por etapa</h2><div class="nota">Cifras en millones de pesos</div><div id="chEtapas"></div></div>
+    <div class="panel"><h2>Brechas de ejecución</h2><div class="nota">Diferencia frente al presupuesto definitivo</div><div class="brechas" id="brechas"></div></div>
+    <div class="panel"><h2 id="partTit">Participación del presupuesto</h2><div class="nota" id="partNota">Cifras en millones de pesos</div><div id="chPart"></div></div>
+  </section>
+
+  <h2 class="sec">Lectura ejecutiva</h2>
+  <section class="lectura" id="lectura"></section>
+
+  <h2 class="sec">Seguimiento por componente <small>Cifras en pesos corrientes · clic en una fila para filtrar todo el tablero</small></h2>
+  <div class="tabla"><table>
+    <thead><tr><th>Componente / Subgrupo / Rubro</th><th>Ppto. Definitivo</th><th>Reservado CDP</th><th>Comprometido RP</th><th>Obligado OPS</th><th>Pagado</th><th>Sin reserva - Sin CDP Disponibles</th><th>Sin comprometer - Sin RP</th><th>Sin Obligar OPS</th><th>% Compromiso</th><th>% Pagado</th></tr></thead>
+    <tbody id="tbody"></tbody>
+  </table></div>
+  </div>
+
+<div id="vCont" hidden>
+  <div class="barra c">
+    <label>Filtrar</label>
+    <select id="cArea" aria-label="Subsecretaría"></select>
+    <select id="cComp" aria-label="Componente"></select>
+    <select id="cFuente" aria-label="Fuente"></select>
+    <input id="cBuscar" type="search" placeholder="Buscar contrato, objeto, rubro o CDP…">
+    <button id="cTodos">Ver TODOS</button>
+    <span class="crumb" id="cCrumb"></span>
+  </div>
+  <section class="kpis" id="cKpis"></section>
+  <section class="grid3" id="cGraf">
+    <div class="panel" id="panelArea"></div>
+    <div class="panel"><h2>Comprometido por fuente</h2><div class="nota">Fuente del rubro presupuestal · millones de pesos</div><div id="cChFuente"></div></div>
+    <div class="panel"><h2>Ejecución por componente</h2><div class="nota">Barra clara: comprometido (CRP) · barra oscura: pagado · millones de pesos</div><div id="cChComp"></div></div>
+  </section>
+  <h2 class="sec">Lectura ejecutiva</h2>
+  <section class="lectura" id="cLectura"></section>
+  <h2 class="sec">Estado del cruce con el presupuesto <small>clic en un estado para filtrar la tabla</small></h2>
+  <div class="chips" id="cChips"></div>
+  <div class="avisos" id="cAvisos" hidden></div>
+  <h2 class="sec">Seguimiento de contratos <small id="cTablaNota">Cifras en pesos corrientes · clic en un contrato para ver sus CDP, CRP y rubros</small></h2>
+  <div class="tabla"><table class="ct">
+    <thead><tr><th>Contrato</th><th>Subsecretaría</th><th>Componente</th><th>Fuente</th><th>Valor contrato</th><th>Comprometido (CRP)</th><th>Pagado</th><th>% Pagado</th><th>Cruce</th></tr></thead>
+    <tbody id="cBody"></tbody>
+  </table></div>
+  <div class="legend-c" id="cLeyenda"></div>
+</div>
+
+  <footer>
+    <span id="fuente"></span>
+    <span id="valid"></span>
+    <span class="lema2">Educación que transforma vidas</span>
+  </footer>
+</div>
+<div class="tricolor"></div>
+
+<script>
+/* =====================  CAPA DE DATOS  ===================== */
+const Datos={
+  async cargar(){const r=await fetch('datos.json?'+Date.now(),{cache:'no-store'});const j=await r.json();if(j.error)throw new Error(j.error);return j;}
+};
+
+/* =====================  CAPA DE CÁLCULO (sin DOM)  ===================== */
+const ETAPAS=['definitivo','reservado','comprometido','obligado','pagado'];
+const Calc={
+  cero:()=>({definitivo:0,reservado:0,comprometido:0,obligado:0,pagado:0}),
+  sumar(a,b){const o={};ETAPAS.forEach(e=>o[e]=a[e]+b[e]);return o;},
+  pct:(x,t)=>t?x/t*100:0,
+  brechas(v){return{sinReservar:v.definitivo-v.reservado,sinComprometer:v.definitivo-v.comprometido,sinObligar:v.definitivo-v.obligado};},
+  /* Árbol: Componente -> [Subgrupo si hay más de uno real] -> Rubro */
+  construir(json){
+    let uid=0;const idx={};
+    const raiz={id:'ALL',nivel:0,nombre:'TODOS',children:[],vals:Calc.cero(),parent:null};
+    idx.ALL=raiz;
+    json.componentes.forEach(c=>{
+      const nc={id:'c:'+c.nombre,nivel:1,nombre:c.nombre,color:'#'+c.color,children:[],vals:Calc.cero(),parent:raiz};
+      idx[nc.id]=nc;raiz.children.push(nc);
+      const conSub=!(c.subgrupos.length===1&&c.subgrupos[0].nombre===c.nombre);
+      c.subgrupos.forEach(s=>{
+        let padre=nc;
+        if(conSub){padre={id:'s:'+c.nombre+'|'+s.nombre,nivel:2,nombre:s.nombre,color:nc.color,children:[],vals:Calc.cero(),parent:nc};idx[padre.id]=padre;nc.children.push(padre);}
+        s.rubros.forEach(r=>{
+          const nr={id:'r:'+(++uid),nivel:conSub?3:2,nombre:r.nombre,color:nc.color,children:[],parent:padre,meta:r,
+                    vals:{definitivo:r.definitivo,reservado:r.reservado,comprometido:r.comprometido,obligado:r.obligado,pagado:r.pagado}};
+          idx[nr.id]=nr;padre.children.push(nr);
+        });
+      });
+    });
+    const agg=n=>{if(n.children.length){n.vals=Calc.cero();n.children.forEach(h=>{agg(h);n.vals=Calc.sumar(n.vals,h.vals);});}};
+    agg(raiz);
+    return{raiz,idx};
+  },
+  /* Elementos que alimentan el gráfico de participación: hijos, o hermanos si es hoja */
+  participacion(n){
+    if(n.children.length)return{lista:n.children,titulo:n.children[0].meta?'rubro':(n.nivel===0?'componente':'subgrupo'),resalta:null,base:n};
+    return{lista:n.parent.children,titulo:'rubro',resalta:n.id,base:n.parent};
+  },
+  mensajes(n,vals){
+    const b=Calc.brechas(vals),f=x=>Fmt.pesos(x);
+    const m=[
+      {ic:'%',t:`El <b>${Fmt.pct(Calc.pct(vals.comprometido,vals.definitivo))}</b> del presupuesto definitivo se encuentra comprometido (RP).`},
+      {ic:'$',t:`El <b>${Fmt.pct(Calc.pct(vals.pagado,vals.definitivo))}</b> de los recursos ha sido pagado (${f(vals.pagado)}).`},
+      {ic:'!',t:`Existen <b>${f(b.sinComprometer)}</b> por comprometer (${Fmt.pct(Calc.pct(b.sinComprometer,vals.definitivo))} del definitivo).`}
+    ];
+    const hijos=n.children;
+    if(hijos.length>1){
+      const top=[...hijos].sort((a,b)=>b.vals.definitivo-a.vals.definitivo)[0];
+      m.push({ic:'#',t:`<b>${top.nombre}</b> concentra el <b>${Fmt.pct(Calc.pct(top.vals.definitivo,vals.definitivo))}</b> del presupuesto${n.nivel===0?'':' de esta selección'}.`});
+    }else{
+      m.push({ic:'#',t:`Faltan <b>${f(b.sinObligar)}</b> por obligar (${Fmt.pct(Calc.pct(b.sinObligar,vals.definitivo))} del definitivo).`});
+    }
+    return m;
+  },
+  filtrarBusqueda(n,q){ // devuelve true si el nodo o algún descendiente coincide
+    if(!q)return true;
+    const t=s=>String(s??'').normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+    const hit=t(n.nombre).includes(q)||(n.meta&&(t(n.meta.cons_ppt).includes(q)||t(n.meta.codigo).includes(q)));
+    return hit||n.children.some(h=>Calc.filtrarBusqueda(h,q));
+  }
+};
+
+/* =====================  FORMATO  ===================== */
+const Fmt={
+  pesos:v=>'$ '+Math.round(v).toLocaleString('es-CO'),
+  num:v=>Math.round(v).toLocaleString('es-CO'),
+  mill:v=>Math.round(v/1e6).toLocaleString('es-CO'),
+  pct:v=>v.toLocaleString('es-CO',{minimumFractionDigits:1,maximumFractionDigits:1})+' %'
+};
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+/* =====================  ESTADO Y VISTA  ===================== */
+const S={json:null,arbol:null,sel:'ALL',abiertos:new Set(),q:''};
+const $=id=>document.getElementById(id);
+
+const KPI=[
+  {k:'definitivo',et:'PRESUPUESTO DEFINITIVO',c:'#144E76',d:'Presupuesto disponible para la vigencia.'},
+  {k:'reservado',et:'RESERVADO CDP',c:'#D8A563',d:'Recursos con CDP registrado.'},
+  {k:'comprometido',et:'COMPROMETIDO RP',c:'#007494',d:'Recursos con compromisos adquiridos.'},
+  {k:'obligado',et:'OBLIGADO OPS',c:'#2B756B',d:'Recursos con bienes y servicios recibidos.'},
+  {k:'pagado',et:'PAGADO',c:'#A87C2F',d:'Recursos efectivamente desembolsados.'}
+];
+const BRE=[
+  {k:'sinReservar',t:'Sin reservar',d:'Definitivo que aún no tiene CDP.'},
+  {k:'sinComprometer',t:'Sin comprometer',d:'Definitivo que aún no está respaldado por un RP.'},
+  {k:'sinObligar',t:'Sin obligar',d:'Definitivo cuyo bien o servicio aún no ha sido recibido (OPS).'}
+];
+
+function nodoSel(){return S.arbol.idx[S.sel]||S.arbol.raiz;}
+function ancestros(n){const a=[];while(n.parent){n=n.parent;a.push(n);}return a;}
+
+function seleccionar(id,abrir=true){
+  S.sel=id;const n=nodoSel();
+  if(abrir){ancestros(n).forEach(a=>S.abiertos.add(a.id));if(n.children.length)S.abiertos.add(n.id);}
+  render();
+}
+
+function renderSelectores(){
+  const n=nodoSel(),anc=[n,...ancestros(n)].reverse();
+  const comp=anc.find(x=>x.nivel===1),sub=anc.find(x=>x.nivel===2&&x.children.length&&!x.meta);
+  const sc=$('selComp');
+  sc.innerHTML='<option value="ALL">TODOS</option>'+S.arbol.raiz.children.map(c=>`<option value="${esc(c.id)}"${comp&&comp.id===c.id?' selected':''}>${esc(c.nombre)}</option>`).join('');
+  const ss=$('selSub');
+  const subs=comp?comp.children.filter(h=>h.children.length&&!h.meta):[];
+  if(subs.length){
+    ss.hidden=false;
+    ss.innerHTML=`<option value="${esc(comp.id)}">Todos los subgrupos</option>`+subs.map(s=>`<option value="${esc(s.id)}"${sub&&sub.id===s.id?' selected':''}>${esc(s.nombre)}</option>`).join('');
+  }else ss.hidden=true;
+  $('crumb').innerHTML=n.id==='ALL'?'Vista: <b>TODOS</b> (total Secretaría de Educación)'
+    :'Vista: <b>'+anc.filter(x=>x.id!=='ALL').map(x=>esc(x.nombre)).join(' › ')+'</b>';
+}
+
+function renderKPI(n){
+  const v=n.vals;
+  $('kpis').innerHTML=KPI.map((k,i)=>{const p=Calc.pct(v[k.k],v.definitivo);
+    return `<div class="card kpi" style="--acc:${k.c}"><div class="cab"><span class="n">${i+1}</span><span class="et">${k.et}</span></div>
+    <div class="val">${Fmt.pesos(v[k.k])}</div>
+    <div class="fila"><span class="bar"><i style="width:${Math.min(p,100)}%"></i></span><span class="pct">${Fmt.pct(p)}</span></div>
+    <div class="desc">${k.d}</div></div>`;}).join('');
+}
+
+function renderBrechas(n){
+  const b=Calc.brechas(n.vals);
+  $('brechas').innerHTML=BRE.map(x=>`<div class="brecha"><h3>${x.t}</h3><div class="v">${Fmt.pesos(b[x.k])}</div><div class="p">${Fmt.pct(Calc.pct(b[x.k],n.vals.definitivo))}</div><div class="d">${x.d}</div></div>`).join('');
+}
+
+function renderEtapas(n){
+  const v=n.vals,W=430,H=270,L=44,B=52,T=26,R=8,ph=H-B-T,pw=W-L-R,max=Math.max(v.definitivo,1);
+  const col=KPI.map(k=>k.c),nom=['Presupuesto definitivo','Reservado CDP','Comprometido RP','Obligado OPS','Pagado'];
+  const paso=pw/5,bw=paso*.62;
+  let s=`<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="Ejecución por etapa">`;
+  for(let i=0;i<=4;i++){const y=T+ph-ph*i/4;s+=`<line x1="${L}" x2="${W-R}" y1="${y}" y2="${y}" stroke="#e9e3d6"/><text x="${L-6}" y="${y+4}" text-anchor="end" font-size="10" fill="#5d6b78">${Fmt.mill(max*i/4)}</text>`;}
+  ETAPAS.forEach((e,i)=>{const h=v[e]/max*ph,x=L+i*paso+(paso-bw)/2,y=T+ph-h;
+    s+=`<rect x="${x}" y="${y}" width="${bw}" height="${Math.max(h,1)}" rx="3" fill="${col[i]}"/><text x="${x+bw/2}" y="${y-6}" text-anchor="middle" font-size="11" font-weight="700" fill="#1b2733">${Fmt.mill(v[e])}</text>`;
+    const w=nom[i].split(' ');s+=`<text text-anchor="middle" font-size="10" fill="#1b2733"><tspan x="${x+bw/2}" y="${H-B+16}">${w[0]}</tspan><tspan x="${x+bw/2}" y="${H-B+28}">${w.slice(1).join(' ')}</tspan></text>`;});
+  $('chEtapas').innerHTML=s+'</svg>';
+}
+
+function renderPart(n){
+  const p=Calc.participacion(n);
+  const lista=[...p.lista].filter(x=>x.vals.definitivo>0||p.lista.length<=12).sort((a,b)=>b.vals.definitivo-a.vals.definitivo);
+  const total=p.base.vals.definitivo||1,top=lista.slice(0,10);
+  const otros=lista.slice(10);
+  if(otros.length)top.push({id:'_o',nombre:`Otros (${otros.length})`,vals:{definitivo:otros.reduce((a,x)=>a+x.vals.definitivo,0)},color:'#9aa5b1'});
+  $('partTit').textContent='Participación del presupuesto por '+p.titulo;
+  $('partNota').textContent=p.resalta?'Rubros del mismo grupo · el seleccionado aparece resaltado · millones de pesos':'Cifras en millones de pesos';
+  const W=560,rh=27,H=top.length*rh+8,lab=190,val=118,bx=lab+6,bwMax=W-lab-val-12,max=Math.max(...top.map(x=>x.vals.definitivo),1);
+  let s=`<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="Participación">`;
+  top.forEach((x,i)=>{const y=i*rh+4,w=x.vals.definitivo/max*bwMax,nm=x.nombre.length>30?x.nombre.slice(0,29)+'…':x.nombre;
+    const hl=p.resalta&&x.id===p.resalta;
+    s+=`<text x="${lab}" y="${y+15}" text-anchor="end" font-size="11" fill="#1b2733" font-weight="${hl?800:400}"><title>${esc(x.nombre)}</title>${esc(nm)}</text>
+    <rect x="${bx}" y="${y+3}" width="${Math.max(w,1.5)}" height="16" rx="3" fill="${x.id==='_o'?'#9aa5b1':'#144E76'}" ${p.resalta&&!hl?'opacity=".45"':''} ${hl?'stroke="#A80506" stroke-width="2"':''}/>
+    <text x="${W-2}" y="${y+15}" text-anchor="end" font-size="11" fill="#1b2733">${Fmt.mill(x.vals.definitivo)}  <tspan font-weight="700">${Fmt.pct(Calc.pct(x.vals.definitivo,total))}</tspan></text>`;});
+  $('chPart').innerHTML=s+'</svg>';
+}
+
+function renderLectura(n){
+  const ic=['%','$','!','#'];
+  $('lectura').innerHTML=Calc.mensajes(n,n.vals).map(m=>`<div class="card"><span class="ic">${m.ic}</span><p>${m.t}</p></div>`).join('');
+}
+
+function celdasBrecha(v,est){return [v.definitivo-v.reservado,v.reservado-v.comprometido,v.comprometido-v.obligado].map(x=>`<td style="${est}">${Fmt.num(x)}</td>`).join('');}
+function filaTabla(n,nivelCss){
+  const v=n.vals,pc=Calc.pct(v.comprometido,v.definitivo),pp=Calc.pct(v.pagado,v.definitivo);
+  const hijos=n.children.length>0,ab=S.abiertos.has(n.id)||!!S.q;
+  const est=nivelCss==='l1'?`background:${n.color}`:'';
+  let sub='';
+  if(n.meta)sub=`<span class="sm">cons_ppt ${esc(n.meta.cons_ppt)} · ${esc(n.meta.codigo)}${n.meta.fuente?' · Fuente '+esc(n.meta.fuente):''}${n.meta.responsable?' · '+esc(n.meta.responsable):''}</span>`;
+  return `<tr class="nodo ${nivelCss}${S.sel===n.id?' sel':''}" data-id="${esc(n.id)}" style="--cc:${n.color}">
+    <td class="n" style="${est}"><span class="chev" data-t="1">${hijos?(ab?'▼':'▶'):''}</span>${esc(n.nombre)}${sub}</td>
+    ${[v.definitivo,v.reservado,v.comprometido,v.obligado,v.pagado].map(x=>`<td style="${est}">${Fmt.num(x)}</td>`).join('')}${celdasBrecha(v,est)}
+    <td style="${est}"><span class="pbar"><i style="width:${Math.min(pc,100)}%"></i></span>${Fmt.pct(pc)}</td>
+    <td style="${est}"><span class="pbar"><i style="width:${Math.min(pp,100)}%"></i></span>${Fmt.pct(pp)}</td></tr>`;
+}
+function renderTabla(){
+  const q=S.q.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().trim();
+  let h='';
+  const rec=n=>{
+    if(!Calc.filtrarBusqueda(n,q))return;
+    h+=filaTabla(n,'l'+n.nivel);
+    if(n.children.length&&(S.abiertos.has(n.id)||q))n.children.forEach(rec);
+  };
+  S.arbol.raiz.children.forEach(rec);
+  const t=S.arbol.raiz.vals,pc=Calc.pct(t.comprometido,t.definitivo),pp=Calc.pct(t.pagado,t.definitivo);
+  h+=`<tr class="total nodo${S.sel==='ALL'?' sel':''}" data-id="ALL"><td class="n">TOTAL EDUCACIÓN</td>${[t.definitivo,t.reservado,t.comprometido,t.obligado,t.pagado].map(x=>`<td>${Fmt.num(x)}</td>`).join('')}${celdasBrecha(t,'')}<td>${Fmt.pct(pc)}</td><td>${Fmt.pct(pp)}</td></tr>`;
+  $('tbody').innerHTML=h;
+}
+function renderPie(){
+  const j=S.json,val=j.validacion;
+  $('corte').textContent=j.corte;
+  $('fuente').textContent=`Fuente: ${j.archivo} · leído ${j.generado}`;
+  $('valid').innerHTML=val.ok===null?`<span class="val-bad">Sin verificar: el Excel no trae totales guardados (ábralo y guárdelo en Excel para validar). Los rubros se muestran tal cual están en el archivo.</span>`:val.ok?`<span class="val-ok">✔ Validado: la suma de ${val.rubros} rubros coincide con el TOTAL GENERAL y los SUBTOTALES del Excel</span>`
+    :`<span class="val-bad">⚠ ${val.diferencias.length} diferencia(s) contra el Excel: ${esc(val.diferencias.map(d=>d.dato+' ('+Fmt.num(d.diferencia)+')').join('; '))}</span>`;
+}
+function render(){
+  const n=nodoSel();
+  renderSelectores();renderKPI(n);renderBrechas(n);renderEtapas(n);renderPart(n);renderLectura(n);renderTabla();renderPie();
+}
+
+/* =====================  EVENTOS  ===================== */
+$('selComp').onchange=e=>seleccionar(e.target.value);
+$('selSub').onchange=e=>seleccionar(e.target.value);
+$('btnTodos').onclick=()=>{$('buscar').value='';S.q='';seleccionar('ALL',false);};
+$('buscar').oninput=e=>{S.q=e.target.value;renderTabla();};
+$('btnRef').onclick=()=>cargar(true);
+$('tbody').onclick=e=>{
+  const tr=e.target.closest('tr[data-id]');if(!tr)return;
+  const id=tr.dataset.id,n=S.arbol.idx[id];
+  if(e.target.dataset.t&&n.children.length){S.abiertos.has(id)?S.abiertos.delete(id):S.abiertos.add(id);renderTabla();return;}
+  seleccionar(id);
+};
+
+async function cargar(forzar){
+  try{
+    const j=await Datos.cargar();
+    const firma=JSON.stringify(j.componentes)+j.archivo;
+    if(!forzar&&S.firma===firma){S.json=j;renderPie();return;}
+    S.firma=firma;S.json=j;S.arbol=Calc.construir(j);
+    if(!S.arbol.idx[S.sel])S.sel='ALL';
+    render();
+  }catch(err){document.querySelector('.wrap').insertAdjacentHTML('afterbegin',`<div class="err">No se pudo leer el Excel: ${esc(err.message)}. Inicie el servidor con servidor_dashboard.py.</div>`);}
+}
+/* =====================  CONTRATOS  ===================== */
+const CRUCE={
+  completo:{t:'Cruce completo',c:'b-ok',d:'Todos los CDP del contrato quedaron amarrados a un rubro del presupuesto, verificados contra el reporte de Hacienda.'},
+  completo_codigo:{t:'Cruce completo · por código',c:'b-cod',d:'Todas las líneas quedaron amarradas a un rubro, pero alguna se resolvió por el código presupuestal y no por el número de CDP.'},
+  parcial:{t:'Cruce parcial',c:'b-par',d:'Parte de los CDP quedó amarrada a un rubro; el resto son vigencias futuras o quedaron por verificar.'},
+  verificar:{t:'Por verificar',c:'b-ver',d:'No fue posible amarrar la línea a un rubro: ni el número de CDP ni el código presupuestal dieron una respuesta única.'},
+  vigencia_futura:{t:'Vigencia futura',c:'b-gris',d:'Compromisos registrados en una vigencia anterior (CDP con formato -AAAA…). No están en el presupuesto de este corte.'},
+  otra_secretaria:{t:'Otra secretaría',c:'b-gris',d:'El CDP resolvió a un rubro que no pertenece a la Secretaría de Educación.'},
+  sin_resolver:{t:'Sin resolver',c:'b-ver',d:'No fue posible amarrar ningún CDP del contrato a un rubro.'}
+};
+const LIN={
+  ok:{t:'Cruzado por CDP',c:'b-ok check',d:'El número de CDP aparece verificado en la columna "cdps" del reporte de Hacienda de este corte.'},
+  ok_codigo:{t:'Cruzado por código',c:'b-cod',d:'El número de CDP no se pudo verificar en Hacienda: casi siempre es de una vigencia anterior, porque los números de CDP se reinician cada año. El rubro se tomó del código presupuestal de la fila, que apunta a un único rubro de Educación. Es un cruce razonable pero no verificado contra Hacienda.'},
+  vigencia_futura:{t:'Vigencia futura',c:'b-gris',d:'Compromiso registrado en una vigencia anterior (CDP con formato -AAAA…). No hace parte del presupuesto de este corte.'},
+  otra_secretaria:{t:'Otra secretaría',c:'b-gris',d:'El CDP y el código coinciden con un rubro que no pertenece a la Secretaría de Educación.'},
+  verificar:{t:'Por verificar',c:'b-ver',d:'El número de CDP apunta a un rubro distinto al del código de la fila, y el código no resuelve a un único rubro de Educación.'},
+  ambiguo:{t:'Por verificar',c:'b-ver',d:'El número de CDP ampara varios rubros y no se puede elegir uno.'},
+  cdp_no_hallado:{t:'CDP no hallado',c:'b-ver',d:'El número de CDP no aparece en el reporte de Hacienda y la fila no trae un código que resuelva el rubro.'},
+  sin_cdp:{t:'Sin CDP',c:'b-ver',d:'La fila tiene valores pero no trae número de CDP ni código presupuestal.'}
+};
+const C={json:null,area:'',comp:'',fuente:'',q:'',cruce:'',abiertos:new Set()};
+
+function cVisibles(){
+  const q=C.q.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().trim();
+  const t=s=>String(s??'').normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+  return C.json.contratos.filter(c=>{
+    if(C.area&&(c.area||'Sin asignar')!==C.area)return false;
+    if(C.comp&&!c.componentes.includes(C.comp))return false;
+    if(C.fuente&&!c.fuentes.includes(C.fuente))return false;
+    if(C.cruce&&c.cruce!==C.cruce)return false;
+    if(!q)return true;
+    return t(c.nro).includes(q)||t(c.objeto).includes(q)||t(c.contratista).includes(q)||
+      c.lineas.some(l=>t(l.rubro).includes(q)||t(l.cdp).includes(q)||t(l.crp).includes(q)||t(l.codigo).includes(q));
+  });
+}
+const cSuma=(ls,f)=>ls.reduce((a,x)=>a+(f(x)||0),0);
+
+function cRender(){
+  const j=C.json,vis=cVisibles();
+  // filtros
+  const areas=[...new Set(j.contratos.map(c=>c.area||'Sin asignar'))].sort();
+  const comps=[...new Set(j.contratos.flatMap(c=>c.componentes))].sort();
+  const fuentes=[...new Set(j.contratos.flatMap(c=>c.fuentes))].sort();
+  const opt=(v,l,sel)=>`<option value="${esc(v)}"${v===sel?' selected':''}>${esc(l)}</option>`;
+  $('cArea').innerHTML=opt('','Todas las subsecretarías',C.area)+areas.map(a=>opt(a,a,C.area)).join('');
+  $('cComp').innerHTML=opt('','Todos los componentes',C.comp)+comps.map(a=>opt(a,a,C.comp)).join('');
+  $('cFuente').innerHTML=opt('','Todas las fuentes',C.fuente)+fuentes.map(a=>opt(a,a.length>42?a.slice(0,41)+'…':a,C.fuente)).join('');
+  const f=[C.area,C.comp,C.fuente,C.cruce?CRUCE[C.cruce].t:''].filter(Boolean);
+  $('cCrumb').innerHTML=f.length?'Filtro: <b>'+f.map(esc).join(' · ')+'</b>':`Vigencia <b>${esc(j.vigencia)}</b> · ${vis.length} contratos`;
+
+  // KPI
+  const crp=cSuma(vis,c=>c.valor_crp),pag=cSuma(vis,c=>c.pagado),cdp=cSuma(vis,c=>c.valor_cdp);
+  const conValor=vis.filter(c=>c.valor_contrato),val=cSuma(conValor,c=>c.valor_contrato);
+  const kp=[
+    {et:'CONTRATOS',v:vis.length.toLocaleString('es-CO'),d:`De la vigencia ${j.vigencia}`,c:'#144E76',p:null},
+    {et:'VALOR DE LOS CONTRATOS',v:Fmt.pesos(val),d:`${conValor.length} de ${vis.length} traen valor en el archivo`,c:'#D8A563',p:null},
+    {et:'RESERVADO (CDP)',v:Fmt.pesos(cdp),d:'Suma de los CDP de estos contratos',c:'#007494',p:null},
+    {et:'COMPROMETIDO (CRP)',v:Fmt.pesos(crp),d:'Suma de los CRP de estos contratos',c:'#2B756B',p:null},
+    {et:'PAGADO',v:Fmt.pesos(pag),d:'Suma de las actas de pago registradas',c:'#A87C2F',p:crp?pag/crp*100:0}];
+  $('cKpis').innerHTML=kp.map((k,i)=>`<div class="card kpi" style="--acc:${k.c}"><div class="cab"><span class="n">${i+1}</span><span class="et">${k.et}</span></div>
+    <div class="val">${k.v}</div>${k.p===null?'<div style="height:17px"></div>':
+    `<div class="fila"><span class="bar"><i style="width:${Math.min(k.p,100)}%"></i></span><span class="pct">${Fmt.pct(k.p)}</span></div>`}
+    <div class="desc">${k.d}</div></div>`).join('');
+
+  cGraficos(vis);
+  cLectura(vis,crp,pag);
+  // chips de estado
+  const orden=['completo','completo_codigo','parcial','verificar','vigencia_futura','otra_secretaria','sin_resolver'];
+  $('cChips').innerHTML=orden.filter(k=>j.cruce[k]).map(k=>`<button class="chip${C.cruce===k?' on':''}" data-cruce="${k}" title="${esc(CRUCE[k].d)}"><b>${j.cruce[k]}</b> <span class="badge ${CRUCE[k].c}">${CRUCE[k].t}</span></button>`).join('');
+  cAvisos();
+  cTabla(vis);
+  $('cLeyenda').textContent=`Fuente: ${j.archivo_cdpcrp} (hoja ${j.vigencia}) cruzado con ${j.hacienda||'el reporte de Hacienda'} · leído ${j.generado}`;
+}
+
+function cBarras(el,lista,total,color){
+  if(!lista.length){el.innerHTML='<p class="nota">Sin datos para esta selección.</p>';return;}
+  const W=560,rh=27,H=lista.length*rh+8,lab=196,max=Math.max(...lista.map(x=>x.v),1);
+  const bx=lab+6,bw=W-lab-130;
+  let s=`<svg viewBox="0 0 ${W} ${H}" width="100%">`;
+  lista.forEach((x,i)=>{const y=i*rh+4,w=x.v/max*bw,nm=x.n.length>32?x.n.slice(0,31)+'…':x.n;
+    s+=`<text x="${lab}" y="${y+15}" text-anchor="end" font-size="11" fill="#1b2733"><title>${esc(x.n)}</title>${esc(nm)}</text>
+    <rect x="${bx}" y="${y+3}" width="${Math.max(w,1.5)}" height="16" rx="3" fill="${color}"/>`;
+    if(x.v2!==undefined)s+=`<rect x="${bx}" y="${y+3}" width="${Math.max(x.v2/max*bw,1)}" height="16" rx="3" fill="#144E76"/>`;
+    s+=`<text x="${W-2}" y="${y+15}" text-anchor="end" font-size="11" fill="#1b2733">${Fmt.mill(x.v)}  <tspan font-weight="700">${Fmt.pct(total?x.v/total*100:0)}</tspan></text>`;});
+  el.innerHTML=s+'</svg>';
+}
+function cGraficos(vis){
+  const crp=cSuma(vis,c=>c.valor_crp);
+  const g=(key)=>{const m={};vis.forEach(c=>{
+      const areas=[...new Set(c.lineas.filter(l=>(l.resolucion==='ok'||l.resolucion==='ok_codigo')&&l.area).map(l=>l.area))];
+      const ks=key==='area'?(areas.length?areas:['Sin asignar']):(key==='comp'?c.componentes:c.fuentes);
+      const base=ks.length?ks:['(sin cruce con el presupuesto)'];
+      base.forEach(k=>{m[k]=m[k]||{n:k,v:0,p:0};m[k].v+=c.valor_crp/base.length;m[k].p+=c.pagado/base.length;});});
+    return Object.values(m).sort((a,b)=>b.v-a.v);};
+  const gArea=g('area').filter(x=>x.n!=='Sin asignar');
+  const pa=$('panelArea');
+  if(gArea.length<2){ // sin áreas asignadas un gráfico de una sola barra no aporta: se muestra el pendiente
+    const falta=C.json.rubros_con_contratos_sin_area,tot=C.json.rubros_con_contratos,hecho=tot-falta;
+    pa.innerHTML=`<h2>Subsecretaría responsable</h2><div class="nota">Pendiente de definir</div>
+      <div class="pendiente"><h3>Falta asignar el área de ${falta} de ${tot} rubros con contratos</h3>
+      <div class="prog"><i style="width:${tot?hecho/tot*100:0}%"></i></div>
+      <p>La subsecretaría no viene en el archivo CDP-CRP ni en el presupuesto, así que no se deduce de ningún dato: hay que definirla una vez.</p>
+      <p style="margin-top:8px">Diligénciela en <b>areas_educacion.xlsx</b> (hoja <b>MAPA_RUBRO</b>, columna <i>subsecretaria</i>). Los rubros marcados con <b>SI</b> en <i>con_contratos</i> son los que alimentan esta página.</p>
+      <p style="margin-top:8px">Apenas se guarde el archivo, este panel se convierte en el gráfico de comprometido por subsecretaría.</p></div>`;
+  }else{
+    pa.innerHTML=`<h2>Comprometido por subsecretaría</h2><div class="nota" id="cNotaArea">Valor de los CRP en millones de pesos</div><div id="cChArea"></div>`;
+    cBarras($('cChArea'),g('area'),crp,'#D8A563');
+  }
+  cBarras($('cChFuente'),g('fuente').slice(0,8),crp,'#007494');
+  cBarras($('cChComp'),g('comp').map(x=>({n:x.n,v:x.v,v2:x.p})),crp,'#7fb0c7');
+}
+function cLectura(vis,crp,pag){
+  const j=C.json,m=[];
+  m.push({ic:'#',t:`La vigencia ${esc(j.vigencia)} tiene <b>${vis.length}</b> contratos con <b>${Fmt.pesos(crp)}</b> comprometidos (CRP).`});
+  m.push({ic:'$',t:`Se ha pagado <b>${Fmt.pesos(pag)}</b>, el <b>${Fmt.pct(crp?pag/crp*100:0)}</b> de lo comprometido.`});
+  // reparte el CRP entre las áreas reales del contrato ("Varias áreas" no es un área)
+  const porA={};vis.forEach(c=>{
+    const as=[...new Set(c.lineas.filter(l=>(l.resolucion==='ok'||l.resolucion==='ok_codigo')&&l.area).map(l=>l.area))];
+    if(as.length)as.forEach(a=>porA[a]=(porA[a]||0)+c.valor_crp/as.length);});
+  const top=Object.entries(porA).sort((a,b)=>b[1]-a[1])[0];
+  m.push(top
+    ?{ic:'%',t:`<b>${esc(top[0])}</b> concentra el <b>${Fmt.pct(crp?top[1]/crp*100:0)}</b> de lo comprometido.`}
+    :{ic:'!',t:`Falta asignar la subsecretaría de <b>${j.rubros_con_contratos_sin_area}</b> de los ${j.rubros_con_contratos} rubros que tienen contratos.`});
+  const rev=vis.filter(c=>c.cruce==='verificar'||c.cruce==='sin_resolver').length;
+  m.push(rev?{ic:'!',t:`<b>${rev}</b> contrato(s) quedaron por verificar: su CDP no coincide con el rubro del código presupuestal.`}
+            :{ic:'%',t:`Todos los contratos filtrados quedaron cruzados con el presupuesto.`});
+  $('cLectura').innerHTML=m.map(x=>`<div class="card"><span class="ic">${x.ic}</span><p>${x.t}</p></div>`).join('');
+}
+function cAvisos(){
+  const j=C.json,a=[];
+  const pc=j.crp_por_estado&&j.crp_por_estado.ok_codigo;
+  if(pc){
+    const crp_total=Object.values(j.crp_por_estado).reduce((x,y)=>x+y,0);
+    const pc_pct=Fmt.pct(pc/crp_total*100);
+    a.push(`<b>Verificación CDP:</b> La columna "cdps" del reporte de Hacienda contiene <b>1.168 CDP únicos</b>. De los contratos en este corte, <b>${pc} pesos (${pc_pct} del CRP)</b> se amarraron usando el <b>código presupuestal</b> como fallback, porque esos CDP son de vigencias anteriores y sus números se reinician cada año. Estos aparecen marcados como <span class="badge b-cod">Cruzado por código</span>. El resto fue verificado en la columna "cdps" de Hacienda.`);
+  }
+  if(j.rubros_con_contratos_sin_area)a.push(`<b>Subsecretarías sin asignar:</b> ${j.rubros_con_contratos_sin_area} de los ${j.rubros_con_contratos} rubros con contratos aún no tienen área. Diligéncielas en <b>areas_educacion.xlsx</b> (hoja MAPA_RUBRO); mientras tanto aparecen como “Sin asignar”.`);
+  const sinObj=j.contratos.filter(c=>!c.objeto).length;
+  if(sinObj)a.push(`<b>Objeto del contrato:</b> ${sinObj} de ${j.contratos.length} contratos no traen objeto (el archivo CDP-CRP no lo incluye). Se escribe en <b>areas_educacion.xlsx</b>, hoja MAPA_CONTRATO.`);
+  if(j.diferencias_pago&&j.diferencias_pago.length)a.push(`<b>Diferencia en pagos:</b> ${j.diferencias_pago.map(d=>`${esc(d.contrato)} (actas ${Fmt.pesos(d.actas)} vs. “valor ejecutado” del archivo ${Fmt.pesos(d.excel)})`).join('; ')}. Se muestra la suma de las actas.`);
+  if(j.otros_periodos_pendientes&&j.otros_periodos_pendientes.length)a.push(`<b>Otras vigencias:</b> el archivo también tiene las hojas ${j.otros_periodos_pendientes.join(', ')}, que no se muestran aquí porque no se pueden cruzar con el presupuesto de ${esc(j.vigencia)}.`);
+  if(j.contratistas_ocultos)a.push(`<b>Datos personales:</b> los nombres de los contratistas no se publican en esta versión.`);
+  $('cAvisos').innerHTML=a.map(x=>`<div>• ${x}</div>`).join('');
+  $('cAvisos').hidden=!a.length;
+}
+function cTabla(vis){
+  if(!vis.length){$('cBody').innerHTML='<tr><td colspan="9" style="text-align:center;padding:24px;color:#5d6b78">Ningún contrato coincide con el filtro.</td></tr>';return;}
+  const lista=[...vis].sort((a,b)=>b.valor_crp-a.valor_crp);
+  let h='';
+  for(const c of lista){
+    const ab=C.abiertos.has(c.nro),cr=CRUCE[c.cruce]||CRUCE.sin_resolver;
+    const pct=c.valor_crp?c.pagado/c.valor_crp*100:0;
+    // lista larga: se muestran 2 y el resto como "+N", con el detalle en el tooltip
+    const lista=(xs,sug)=>{
+      if(!xs.length)return sug&&sug.length?`<span class="sug" title="${esc(sug.join(' · '))}">${esc(sug[0])}${sug.length>1?' +'+(sug.length-1):''} (sin confirmar)</span>`:'<span class="mut">—</span>';
+      const v=xs.slice(0,2).map(esc).join(' · ');
+      return `<span title="${esc(xs.join(' · '))}">${v}${xs.length>2?` <span class="mut">+${xs.length-2}</span>`:''}</span>`;};
+    const compTxt=lista(c.componentes,c.componentes_sugeridos);
+    const fteTxt=lista(c.fuentes,c.fuentes_sugeridas);
+    h+=`<tr class="nodo k" data-c="${esc(c.nro)}">
+      <td class="n"><span class="chev">${ab?'▼':'▶'}</span>${esc(c.nro)}
+        <span class="sub2">${c.objeto?esc(c.objeto):(c.contratista?esc(c.contratista):'<i>sin objeto registrado</i>')}${c.objeto&&c.contratista?' · '+esc(c.contratista):''}</span></td>
+      <td class="t">${c.area?esc(c.area):'<span class="mut">Sin asignar</span>'}</td>
+      <td class="t">${compTxt}</td>
+      <td class="t">${fteTxt}</td>
+      <td>${c.valor_contrato?Fmt.num(c.valor_contrato):'<span class="mut">—</span>'}</td>
+      <td>${Fmt.num(c.valor_crp)}</td>
+      <td>${Fmt.num(c.pagado)}</td>
+      <td><span class="pbar"><i style="width:${Math.min(pct,100)}%"></i></span>${Fmt.pct(pct)}</td>
+      <td class="t"><span class="badge ${cr.c}" title="${esc(cr.d)}">${cr.t}</span>${c.lineas_por_codigo?`<span class="badge b-cod" style="margin-top:3px" title="${esc(LIN.ok_codigo.d)}">${c.lineas_por_codigo} por código</span>`:''}</td></tr>`;
+    if(ab){
+      h+=`<tr class="det"><td colspan="9"><table><thead><tr><th class="l">Rubro presupuestal</th><th class="l">Componente</th><th class="l">Fuente</th><th>CDP</th><th>CRP</th><th>Valor CDP</th><th>Valor CRP</th><th>Pagado</th><th class="l">Estado</th></tr></thead><tbody>`;
+      for(const l of c.lineas){
+        const e=LIN[l.resolucion]||LIN.verificar;
+        const rub=l.rubro?`${esc(l.rubro)} <span class="mut">(cons_ppt ${esc(l.cons_ppt)})</span>`
+          :(l.sugerido_rubro?`<span class="sug">${esc(l.sugerido_rubro)} — sugerido por el código, sin confirmar</span>`:`<span class="mut">${esc(l.codigo||'sin código')}</span>`);
+        const cdps_info=l.en_cdps?'<span class="cdps-info" title="CDP verificado en la columna cdps de Hacienda">(en cdps)</span>':'';
+        h+=`<tr><td class="l">${rub}</td><td class="l">${esc(l.componente||l.sugerido_componente||'—')}</td><td class="l">${esc(l.fuente||l.sugerido_fuente||'—')}</td>
+          <td class="r">${esc(l.cdp||'—')}</td><td class="r">${esc(l.crp||'—')}</td><td class="r">${Fmt.num(l.valor_cdp)}</td><td class="r">${Fmt.num(l.valor_crp)}</td><td class="r">${Fmt.num(l.pagado)}</td>
+          <td class="l"><span class="badge ${e.c}" title="${esc(e.d)}">${e.t}${l.confianza==='media'?' (sin código)':''}</span>${cdps_info}</td></tr>`;
+      }
+      h+='</tbody></table></td></tr>';
+    }
+  }
+  $('cBody').innerHTML=h;
+}
+
+$('cArea').onchange=e=>{C.area=e.target.value;cRender();};
+$('cComp').onchange=e=>{C.comp=e.target.value;cRender();};
+$('cFuente').onchange=e=>{C.fuente=e.target.value;cRender();};
+$('cBuscar').oninput=e=>{C.q=e.target.value;cRender();};
+$('cTodos').onclick=()=>{C.area=C.comp=C.fuente=C.cruce=C.q='';$('cBuscar').value='';cRender();};
+$('cChips').onclick=e=>{const b=e.target.closest('[data-cruce]');if(!b)return;C.cruce=C.cruce===b.dataset.cruce?'':b.dataset.cruce;cRender();};
+$('cBody').onclick=e=>{const tr=e.target.closest('tr[data-c]');if(!tr)return;
+  const k=tr.dataset.c;C.abiertos.has(k)?C.abiertos.delete(k):C.abiertos.add(k);cTabla(cVisibles());};
+
+async function cCargar(){
+  try{
+    const r=await fetch('contratos.json?'+Date.now(),{cache:'no-store'});
+    const j=await r.json();
+    if(j.error)throw new Error(j.error);
+    C.json=j;cRender();
+  }catch(err){
+    $('vCont').innerHTML=`<div class="err">No se pudieron leer los contratos: ${esc(err.message)}</div>`;
+  }
+}
+
+/* Pestañas */
+function verTab(t){
+  const cont=t==='contratos';
+  $('vPres').hidden=cont;$('vCont').hidden=!cont;
+  document.querySelectorAll('.tabs button').forEach(b=>b.classList.toggle('on',b.dataset.tab===t));
+  $('tituloVista').textContent=cont?'Seguimiento de Contratos':'Informe de Ejecución Presupuestal';
+  if(cont&&!C.json)cCargar();
+}
+document.querySelector('.tabs').onclick=e=>{const b=e.target.closest('[data-tab]');if(b)verTab(b.dataset.tab);};
+
+cargar(true);
+setInterval(()=>cargar(false),15000);
+setInterval(()=>{if(C.json&&!$('vCont').hidden)cCargar();},20000);
+</script>
+</body>
+</html>
