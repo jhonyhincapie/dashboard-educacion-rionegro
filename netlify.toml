@@ -1,0 +1,16 @@
+[build]
+  publish = "publicar"
+  command = "python SECRETARIA_EDUCACION/publicar_dashboard.py"
+
+[build.environment]
+  PYTHON_VERSION = "3.12"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[headers]
+  [headers.values]
+    Cache-Control = "no-store"
+    X-Robots-Tag = "noindex, nofollow"
