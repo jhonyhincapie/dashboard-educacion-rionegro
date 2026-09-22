@@ -1,6 +1,6 @@
 [build]
   publish = "publicar"
-  command = "python SECRETARIA_EDUCACION/publicar_dashboard.py"
+  command = "pip install -r SECRETARIA_EDUCACION/requirements.txt && python SECRETARIA_EDUCACION/publicar_dashboard.py"
 
 [build.environment]
   PYTHON_VERSION = "3.12"
