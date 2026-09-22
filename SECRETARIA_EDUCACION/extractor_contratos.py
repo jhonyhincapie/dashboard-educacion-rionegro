@@ -27,7 +27,24 @@ AREAS = ["Subsecretaría Administrativa y Financiera",
          "Subsecretaría de Planeación y Calidad Educativa",
          "Subsecretaría de Educación Inicial y Cobertura Educativa"]
 
-DETALLE_FINANCIERO = os.path.join(ENTRADAS, "DETALLE FINANCIERO POR CONTRATO -V3 - ER.xlsx")
+DETALLE_FINANCIERO_NOMBRE = "DETALLE FINANCIERO POR CONTRATO -V3 - ER.xlsx"
+DETALLE_FINANCIERO = os.path.join(ENTRADAS, DETALLE_FINANCIERO_NOMBRE)
+# Carpeta de OneDrive sincronizada via "Agregar acceso directo" (fuente en linea,
+# editada por varias personas). Si existe y tiene el archivo, tiene prioridad
+# sobre la copia estatica en entradas/.
+ONEDRIVE_ROOT = os.environ.get("OneDrive", os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(BASE))))))
+DETALLE_FINANCIERO_ONEDRIVE = os.path.join(
+    ONEDRIVE_ROOT, "NO BORRAR - CONTROL FINANCIERO", DETALLE_FINANCIERO_NOMBRE)
+
+
+def ruta_detalle_financiero():
+    """Prioriza la carpeta de OneDrive sincronizada (fuente en linea, siempre
+    actualizada); si no esta disponible, cae a la copia estatica en entradas/."""
+    if os.path.exists(DETALLE_FINANCIERO_ONEDRIVE):
+        return DETALLE_FINANCIERO_ONEDRIVE
+    if os.path.exists(DETALLE_FINANCIERO):
+        return DETALLE_FINANCIERO
+    return None
 
 COL_ACTA_INI, COL_ACTA_FIN = 9, 25
 _cache = {}
@@ -87,10 +104,11 @@ def _leer_subsecretarias_detalle():
     """Lee mapeo de contrato -> subsecretaria desde DETALLE FINANCIERO POR CONTRATO.
     Columnas: Col2=Subsecretaria, Col3=Numero contrato. Hoja 2026."""
     mapa = {}
-    if not os.path.exists(DETALLE_FINANCIERO):
+    ruta = ruta_detalle_financiero()
+    if not ruta:
         return mapa
     try:
-        wb = _abrir(DETALLE_FINANCIERO)
+        wb = _abrir(ruta)
         if "2026" not in wb.sheetnames:
             return mapa
         ws = wb["2026"]

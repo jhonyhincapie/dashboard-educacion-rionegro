@@ -4,3 +4,6 @@ publicar.zip
 __pycache__/
 *.pyc
 .claude/settings.local.json
+SECRETARIA_EDUCACION/.ultimo_procesado.json
+SECRETARIA_EDUCACION/.ultimo_procesado.txt
+SECRETARIA_EDUCACION/auto_actualizar.log
