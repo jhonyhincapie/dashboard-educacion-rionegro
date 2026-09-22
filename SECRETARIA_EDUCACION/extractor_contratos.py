@@ -27,6 +27,8 @@ AREAS = ["Subsecretaría Administrativa y Financiera",
          "Subsecretaría de Planeación y Calidad Educativa",
          "Subsecretaría de Educación Inicial y Cobertura Educativa"]
 
+DETALLE_FINANCIERO = os.path.join(ENTRADAS, "DETALLE FINANCIERO POR CONTRATO -V3 - ER.xlsx")
+
 COL_ACTA_INI, COL_ACTA_FIN = 9, 25
 _cache = {}
 
@@ -74,6 +76,40 @@ def _txt(v):
 
 
 # ------------------------------------------------------------------ AREAS
+def _normalizar_nro_contrato(nro):
+    """Normaliza número de contrato para comparación (espacios, puntos, etc)."""
+    if not nro:
+        return ""
+    return _txt(nro).strip()
+
+
+def _leer_subsecretarias_detalle():
+    """Lee mapeo de contrato -> subsecretaria desde DETALLE FINANCIERO POR CONTRATO.
+    Columnas: Col2=Subsecretaria, Col3=Numero contrato. Hoja 2026."""
+    mapa = {}
+    if not os.path.exists(DETALLE_FINANCIERO):
+        return mapa
+    try:
+        wb = _abrir(DETALLE_FINANCIERO)
+        if "2026" not in wb.sheetnames:
+            return mapa
+        ws = wb["2026"]
+        for row_idx in range(3, ws.max_row + 1):
+            subsec = _txt(ws.cell(row=row_idx, column=2).value)
+            num_contrato = _normalizar_nro_contrato(ws.cell(row=row_idx, column=3).value)
+            if subsec and num_contrato:
+                mapa[num_contrato] = subsec
+                # Agregar clave con espacios extras eliminados (por si acaso)
+                num_limpio = num_contrato.replace(" ", "")
+                if num_limpio != num_contrato:
+                    mapa[num_limpio] = subsec
+        if mapa:
+            print(f"debug: mapeo de subsecretarias desde detalle: {len(mapa)//2} contratos (con normalizacion)", file=sys.stderr)
+    except Exception as e:
+        print(f"debug: no se pudo leer subsecretarias del detalle: {e}", file=sys.stderr)
+    return mapa
+
+
 def leer_areas():
     """MAPA_RUBRO: cons_ppt -> subsecretaria. MAPA_CONTRATO: nro_contrato -> (subsecretaria, objeto)."""
     out = {"rubro": {}, "contrato": {}, "objeto": {}, "existe": os.path.exists(AREAS_PATH), "areas": list(AREAS)}
@@ -280,6 +316,7 @@ def extraer_contratos(ocultar_contratista=False, vigencia="2026"):
     hac = _hacienda_para(presu["archivo"])
     mapa = _mapa_cdp(hac) if hac else {}
     mapa_cdps = _mapa_cdps_hacienda(hac) if hac else {}
+    mapa_subsec = _leer_subsecretarias_detalle()
     # diagnóstico: cuántos CDP únicos en la columna "cdps"
     if mapa_cdps:
         print(f"debug: columna 'cdps' de Hacienda contiene {len(mapa_cdps)} CDP únicos", file=sys.stderr)
@@ -389,12 +426,14 @@ def extraer_contratos(ocultar_contratista=False, vigencia="2026"):
                     "Varias áreas" if len(asig) > 1 else "")
         for x in L:
             x["area"] = areas["contrato"].get(c["nro"]) or areas["rubro"].get(x["cons_ppt"] or "", "")
+        responsable = mapa_subsec.get(c["nro"], "")
         salida.append({
             "nro": c["nro"], "contratista": "" if ocultar_contratista else c["contratista"],
             "objeto": areas["objeto"].get(c["nro"], ""), "valor_contrato": valor,
             "valor_cdp": sum(x["valor_cdp"] for x in L), "valor_crp": crp_tot, "pagado": pag,
             "ejecutado_excel": ej, "actas": sum(x["actas"] for x in L),
             "componentes": comps, "fuentes": fuentes, "area": area or "",
+            "responsable": responsable,
             "componentes_sugeridos": comps_sug, "fuentes_sugeridas": fuentes_sug,
             "cruce": cruce, "lineas_por_codigo": len(por_codigo),
             "fila_excel": c["fila"], "lineas": L})

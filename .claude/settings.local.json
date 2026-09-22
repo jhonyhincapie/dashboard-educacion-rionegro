@@ -68,7 +68,8 @@
       "PowerShell(cd \"C:\\\\Users\\\\jhincapie\\\\OneDrive - Municipio de Rionegro\\\\Escritorio\\\\EDUCACIÓN\\\\2026\\\\RIONEGRO_EDUCACION_AI\"; python -c \"import json; datos = json.load\\(open\\('dashboard_datos.json'\\)\\); print\\('✓ JSON cargado correctamente'\\); print\\(f'  - {len\\(datos[\\\\\"componentes\\\\\"]\\)} componentes'\\); print\\(f'  - Total: \\\\${datos[\\\\\"totales_globales\\\\\"][\\\\\"totales\\\\\"][\\\\\"definitivo\\\\\"]:,.0f}'\\)\")",
       "Bash(python extractor_contratos.py)",
       "Bash(python publicar_dashboard.py)",
-      "Bash(python servidor_dashboard.py)"
+      "Bash(python servidor_dashboard.py)",
+      "Bash(python3)"
     ]
   }
 }
