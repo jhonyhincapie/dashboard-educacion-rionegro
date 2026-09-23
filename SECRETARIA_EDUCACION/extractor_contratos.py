@@ -101,8 +101,7 @@ def _normalizar_nro_contrato(nro):
 
 
 def _leer_subsecretarias_detalle():
-    """Lee mapeo de código presupuestal -> (objeto, contratista) desde DETALLE FINANCIERO POR CONTRATO.
-    El archivo relaciona el código presupuestal con objeto y contratista.
+    """Lee mapeo desde DETALLE FINANCIERO POR CONTRATO por código presupuestal.
     Columnas: Col2=Subsecretaria, Col3=Código presupuestal, Col4=Objeto, Col5=Contratista. Hoja 2026."""
     mapa_subsec = {}
     mapa_objeto = {}
@@ -124,12 +123,14 @@ def _leer_subsecretarias_detalle():
             if cod_presupuestal:
                 # Normalizar el código presupuestal para que coincida con cons_ppt del CDP-CRP
                 cod_normalizado = cod_presupuestal.replace("-", ".") if "-" in cod_presupuestal else cod_presupuestal
+                if subsec:
+                    mapa_subsec[cod_normalizado] = subsec
                 if objeto:
                     mapa_objeto[cod_normalizado] = objeto
                 if contratista:
                     mapa_contratista[cod_normalizado] = contratista
-        if mapa_objeto or mapa_contratista:
-            print(f"debug: mapeo detalle: {len(mapa_objeto)} objetos y {len(mapa_contratista)} contratistas por código presupuestal", file=sys.stderr)
+        if mapa_subsec or mapa_objeto or mapa_contratista:
+            print(f"debug: mapeo detalle: {len(mapa_subsec)} subsecretarías, {len(mapa_objeto)} objetos, {len(mapa_contratista)} contratistas", file=sys.stderr)
     except Exception as e:
         print(f"debug: no se pudo leer detalle: {e}", file=sys.stderr)
     return {"subsec": mapa_subsec, "objeto": mapa_objeto, "contratista": mapa_contratista}
@@ -454,19 +455,21 @@ def extraer_contratos(ocultar_contratista=False, vigencia="2026"):
                     "Varias áreas" if len(asig) > 1 else "")
         for x in L:
             x["area"] = areas["contrato"].get(c["nro"]) or areas["rubro"].get(x["cons_ppt"] or "", "")
-        responsable = mapa_subsec.get(c["nro"], "")
-        # Buscar objeto y contratista por código presupuestal de las líneas
+        # Buscar subsecretaría, objeto y contratista por código presupuestal de las líneas
+        responsable = ""
         contratista_final = c["contratista"]
         objeto_final = areas["objeto"].get(c["nro"], "")
         # Buscar en las líneas del contrato por código presupuestal
         for linea in L:
             cons_ppt = _txt(linea.get("cons_ppt"))
             if cons_ppt:
+                if not responsable and cons_ppt in mapa_subsec:
+                    responsable = mapa_subsec[cons_ppt]
                 if not objeto_final and cons_ppt in mapa_objeto_detalle:
                     objeto_final = mapa_objeto_detalle[cons_ppt]
                 if not contratista_final and cons_ppt in mapa_contratista_detalle:
                     contratista_final = mapa_contratista_detalle[cons_ppt]
-                if objeto_final and contratista_final:
+                if responsable and objeto_final and contratista_final:
                     break
         salida.append({
             "nro": c["nro"], "contratista": "" if ocultar_contratista else contratista_final,
