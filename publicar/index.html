@@ -131,7 +131,24 @@ footer .lema2{font-family:Georgia,serif;font-style:italic;color:var(--azul)}
 .pendiente .prog i{display:block;height:100%;background:var(--oro)}
 .avisos{border:1px solid #f0d497;background:#fffaf0;border-radius:12px;padding:10px 14px;font-size:12.5px;color:#5a4a1a;margin:0 0 14px;line-height:1.55}
 .avisos b{color:#8a5a00}
-table.ct{min-width:1250px}
+table.ct{min-width:1250px;table-layout:fixed}
+table.ct th,table.ct td{border-right:1px solid #d9d2c3;vertical-align:middle}
+table.ct th:last-child,table.ct td:last-child{border-right:0}
+table.ct thead th{text-align:center;border-right-color:rgba(255,255,255,.25)}
+table.ct th:nth-child(1){width:150px}
+table.ct th:nth-child(2){width:300px}
+table.ct th:nth-child(3){width:150px}
+table.ct th:nth-child(4){width:170px}
+table.ct th:nth-child(5){width:190px}
+table.ct th:nth-child(6),table.ct th:nth-child(7){width:125px}
+table.ct th:nth-child(8){width:110px}
+table.ct th:nth-child(9){width:115px}
+table.ct td.n{min-width:0}
+table.ct td.t{max-width:none;min-width:0}
+table.ct tr.det table{table-layout:auto}
+table.ct tr.det table th,table.ct tr.det table td{width:auto;border-right:0;text-align:right}
+table.ct tr.det table th.l,table.ct tr.det table td.l{text-align:left}
+table.ct tr.det>td{border-right:0}
 table.ct td.n{min-width:250px}
 table.ct td.t{text-align:left;white-space:normal;min-width:150px;max-width:230px;font-size:12px}
 table.ct tr.k td{font-weight:600}
