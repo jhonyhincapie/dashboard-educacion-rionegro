@@ -7,7 +7,7 @@ import extractor_contratos as extc
 import extractor_dashboard as ext
 
 # Los nombres de contratistas NO se publican en internet salvo que se cambie esto a False.
-OCULTAR_CONTRATISTAS_EN_PUBLICO = True
+OCULTAR_CONTRATISTAS_EN_PUBLICO = False
 
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(RAIZ, "publicar")

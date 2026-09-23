@@ -124,10 +124,28 @@ def extraer(excel_path=None):
 
     m = re.search(r"(\d{2})_(\d{2})_(\d{4})", os.path.basename(excel_path))
     corte = (f"{int(m.group(1))} de {MESES[int(m.group(2)) - 1]} de {m.group(3)}" if m else "")
+
+    # Obtener fecha de última actualización del archivo DETALLE FINANCIERO
+    fecha_ultima_act_detalle = None
+    try:
+        import glob as glob_mod
+        detalle_path = None
+        # Buscar en entradas/
+        for p in glob_mod.glob(os.path.join(BASE, "entradas", "*DETALLE*FINANCIERO*")):
+            if os.path.isfile(p):
+                detalle_path = p
+                break
+        if detalle_path and os.path.exists(detalle_path):
+            mtime = os.path.getmtime(detalle_path)
+            fecha_ultima_act_detalle = datetime.fromtimestamp(mtime).strftime("%d/%m/%Y %H:%M:%S")
+    except Exception:
+        pass
+
     return {
         "corte": corte,
         "archivo": os.path.basename(excel_path),
         "generado": datetime.now().strftime("%d/%m/%Y %H:%M:%S"),
+        "fecha_ultima_actualizacion_detalle": fecha_ultima_act_detalle,
         "total_excel": total_excel,
         "validacion": {"ok": (not diffs) if (total_excel or subtotales_excel) else None,
                        "diferencias": diffs, "rubros": sum(

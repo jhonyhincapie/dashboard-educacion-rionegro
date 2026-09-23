@@ -425,7 +425,7 @@ function renderTabla(){
 }
 function renderPie(){
   const j=S.json,val=j.validacion;
-  $('corte').textContent=j.corte;
+  $('corte').textContent=j.fecha_ultima_actualizacion_detalle||j.corte;
   $('fuente').textContent=`Fuente: ${j.archivo} · leído ${j.generado}`;
   $('valid').innerHTML=val.ok===null?`<span class="val-bad">Sin verificar: el Excel no trae totales guardados (ábralo y guárdelo en Excel para validar). Los rubros se muestran tal cual están en el archivo.</span>`:val.ok?`<span class="val-ok">✔ Validado: la suma de ${val.rubros} rubros coincide con el TOTAL GENERAL y los SUBTOTALES del Excel</span>`
     :`<span class="val-bad">⚠ ${val.diferencias.length} diferencia(s) contra el Excel: ${esc(val.diferencias.map(d=>d.dato+' ('+Fmt.num(d.diferencia)+')').join('; '))}</span>`;

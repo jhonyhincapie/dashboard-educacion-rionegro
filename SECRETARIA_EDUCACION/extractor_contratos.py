@@ -101,31 +101,38 @@ def _normalizar_nro_contrato(nro):
 
 
 def _leer_subsecretarias_detalle():
-    """Lee mapeo de contrato -> subsecretaria desde DETALLE FINANCIERO POR CONTRATO.
-    Columnas: Col2=Subsecretaria, Col3=Numero contrato. Hoja 2026."""
-    mapa = {}
+    """Lee mapeo de código presupuestal -> (objeto, contratista) desde DETALLE FINANCIERO POR CONTRATO.
+    El archivo relaciona el código presupuestal con objeto y contratista.
+    Columnas: Col2=Subsecretaria, Col3=Código presupuestal, Col4=Objeto, Col5=Contratista. Hoja 2026."""
+    mapa_subsec = {}
+    mapa_objeto = {}
+    mapa_contratista = {}
     ruta = ruta_detalle_financiero()
     if not ruta:
-        return mapa
+        return {"subsec": mapa_subsec, "objeto": mapa_objeto, "contratista": mapa_contratista}
     try:
         wb = _abrir(ruta)
         if "2026" not in wb.sheetnames:
-            return mapa
+            return {"subsec": mapa_subsec, "objeto": mapa_objeto, "contratista": mapa_contratista}
         ws = wb["2026"]
         for row_idx in range(3, ws.max_row + 1):
             subsec = _txt(ws.cell(row=row_idx, column=2).value)
-            num_contrato = _normalizar_nro_contrato(ws.cell(row=row_idx, column=3).value)
-            if subsec and num_contrato:
-                mapa[num_contrato] = subsec
-                # Agregar clave con espacios extras eliminados (por si acaso)
-                num_limpio = num_contrato.replace(" ", "")
-                if num_limpio != num_contrato:
-                    mapa[num_limpio] = subsec
-        if mapa:
-            print(f"debug: mapeo de subsecretarias desde detalle: {len(mapa)//2} contratos (con normalizacion)", file=sys.stderr)
+            # La columna 3 contiene código presupuestal (cons_ppt) en el DETALLE FINANCIERO
+            cod_presupuestal = _txt(ws.cell(row=row_idx, column=3).value)
+            objeto = _txt(ws.cell(row=row_idx, column=4).value)
+            contratista = _txt(ws.cell(row=row_idx, column=5).value)
+            if cod_presupuestal:
+                # Normalizar el código presupuestal para que coincida con cons_ppt del CDP-CRP
+                cod_normalizado = cod_presupuestal.replace("-", ".") if "-" in cod_presupuestal else cod_presupuestal
+                if objeto:
+                    mapa_objeto[cod_normalizado] = objeto
+                if contratista:
+                    mapa_contratista[cod_normalizado] = contratista
+        if mapa_objeto or mapa_contratista:
+            print(f"debug: mapeo detalle: {len(mapa_objeto)} objetos y {len(mapa_contratista)} contratistas por código presupuestal", file=sys.stderr)
     except Exception as e:
-        print(f"debug: no se pudo leer subsecretarias del detalle: {e}", file=sys.stderr)
-    return mapa
+        print(f"debug: no se pudo leer detalle: {e}", file=sys.stderr)
+    return {"subsec": mapa_subsec, "objeto": mapa_objeto, "contratista": mapa_contratista}
 
 
 def leer_areas():
@@ -334,7 +341,10 @@ def extraer_contratos(ocultar_contratista=False, vigencia="2026"):
     hac = _hacienda_para(presu["archivo"])
     mapa = _mapa_cdp(hac) if hac else {}
     mapa_cdps = _mapa_cdps_hacienda(hac) if hac else {}
-    mapa_subsec = _leer_subsecretarias_detalle()
+    detalle_data = _leer_subsecretarias_detalle()
+    mapa_subsec = detalle_data["subsec"]
+    mapa_objeto_detalle = detalle_data["objeto"]
+    mapa_contratista_detalle = detalle_data["contratista"]
     # diagnóstico: cuántos CDP únicos en la columna "cdps"
     if mapa_cdps:
         print(f"debug: columna 'cdps' de Hacienda contiene {len(mapa_cdps)} CDP únicos", file=sys.stderr)
@@ -445,9 +455,22 @@ def extraer_contratos(ocultar_contratista=False, vigencia="2026"):
         for x in L:
             x["area"] = areas["contrato"].get(c["nro"]) or areas["rubro"].get(x["cons_ppt"] or "", "")
         responsable = mapa_subsec.get(c["nro"], "")
+        # Buscar objeto y contratista por código presupuestal de las líneas
+        contratista_final = c["contratista"]
+        objeto_final = areas["objeto"].get(c["nro"], "")
+        # Buscar en las líneas del contrato por código presupuestal
+        for linea in L:
+            cons_ppt = _txt(linea.get("cons_ppt"))
+            if cons_ppt:
+                if not objeto_final and cons_ppt in mapa_objeto_detalle:
+                    objeto_final = mapa_objeto_detalle[cons_ppt]
+                if not contratista_final and cons_ppt in mapa_contratista_detalle:
+                    contratista_final = mapa_contratista_detalle[cons_ppt]
+                if objeto_final and contratista_final:
+                    break
         salida.append({
-            "nro": c["nro"], "contratista": "" if ocultar_contratista else c["contratista"],
-            "objeto": areas["objeto"].get(c["nro"], ""), "valor_contrato": valor,
+            "nro": c["nro"], "contratista": "" if ocultar_contratista else contratista_final,
+            "objeto": objeto_final, "valor_contrato": valor,
             "valor_cdp": sum(x["valor_cdp"] for x in L), "valor_crp": crp_tot, "pagado": pag,
             "ejecutado_excel": ej, "actas": sum(x["actas"] for x in L),
             "componentes": comps, "fuentes": fuentes, "area": area or "",
@@ -472,10 +495,21 @@ def extraer_contratos(ocultar_contratista=False, vigencia="2026"):
                         for k, v in rubros_edu.items()], [c["nro"] for c in salida])
     except Exception as e:  # el mapa es opcional; no debe tumbar el dashboard
         print("aviso: no se pudo actualizar areas_educacion.xlsx:", e, file=sys.stderr)
+    # Obtener fecha de última actualización del archivo DETALLE FINANCIERO
+    ruta_detalle = ruta_detalle_financiero()
+    fecha_ultima_act = None
+    if ruta_detalle and os.path.exists(ruta_detalle):
+        try:
+            mtime = os.path.getmtime(ruta_detalle)
+            fecha_ultima_act = datetime.fromtimestamp(mtime).strftime("%d/%m/%Y %H:%M:%S")
+        except Exception as e:
+            print(f"debug: no se pudo obtener fecha del detalle: {e}", file=sys.stderr)
+
     return {
         "vigencia": vigencia, "corte": presu["corte"], "archivo_cdpcrp": os.path.basename(src),
         "archivo_presupuesto": presu["archivo"], "generado": datetime.now().strftime("%d/%m/%Y %H:%M:%S"),
         "hacienda": os.path.basename(hac) if hac else None,
+        "fecha_ultima_actualizacion_detalle": fecha_ultima_act,
         "areas": areas["areas"], "areas_definidas": len(areas["rubro"]) + len(areas["contrato"]),
         "rubros_total": len(rubros_edu), "rubros_con_contratos": len(rubros_con),
         "rubros_con_contratos_sin_area": len([k for k in rubros_con if k not in areas["rubro"]]),
