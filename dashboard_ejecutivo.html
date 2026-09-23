@@ -191,8 +191,6 @@ tr.det td.r{padding:6px 8px;background:#fff}
     <select id="selComp" aria-label="Componente"></select>
     <select id="selSub" aria-label="Subgrupo" hidden></select>
     <button id="btnTodos">Ver TODOS</button>
-    <input id="buscar" type="search" placeholder="Buscar rubro o cons_ppt…">
-    <button class="sec" id="btnRef" title="Volver a leer el Excel">Actualizar desde Excel</button>
     <span class="crumb" id="crumb"></span>
   </div>
 
@@ -461,9 +459,7 @@ function render(){
 /* =====================  EVENTOS  ===================== */
 $('selComp').onchange=e=>seleccionar(e.target.value);
 $('selSub').onchange=e=>seleccionar(e.target.value);
-$('btnTodos').onclick=()=>{$('buscar').value='';S.q='';seleccionar('ALL',false);};
-$('buscar').oninput=e=>{S.q=e.target.value;renderTabla();};
-$('btnRef').onclick=()=>cargar(true);
+$('btnTodos').onclick=()=>{S.q='';S.abiertos.clear();seleccionar('ALL',false);};
 $('tbody').onclick=e=>{
   const tr=e.target.closest('tr[data-id]');if(!tr)return;
   const id=tr.dataset.id,n=S.arbol.idx[id];
