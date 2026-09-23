@@ -455,22 +455,23 @@ def extraer_contratos(ocultar_contratista=False, vigencia="2026"):
                     "Varias áreas" if len(asig) > 1 else "")
         for x in L:
             x["area"] = areas["contrato"].get(c["nro"]) or areas["rubro"].get(x["cons_ppt"] or "", "")
-        # Buscar subsecretaría, objeto y contratista por código presupuestal de las líneas
-        responsable = ""
+        # Subsecretaría, objeto y contratista: MAPA_CONTRATO (areas_educacion.xlsx, manual y confiable)
+        # manda primero; el DETALLE FINANCIERO por código presupuestal es solo respaldo.
+        responsable = areas["contrato"].get(c["nro"], "")
         contratista_final = c["contratista"]
         objeto_final = areas["objeto"].get(c["nro"], "")
-        # Buscar en las líneas del contrato por código presupuestal
-        for linea in L:
-            cons_ppt = _txt(linea.get("cons_ppt"))
-            if cons_ppt:
-                if not responsable and cons_ppt in mapa_subsec:
-                    responsable = mapa_subsec[cons_ppt]
-                if not objeto_final and cons_ppt in mapa_objeto_detalle:
-                    objeto_final = mapa_objeto_detalle[cons_ppt]
-                if not contratista_final and cons_ppt in mapa_contratista_detalle:
-                    contratista_final = mapa_contratista_detalle[cons_ppt]
-                if responsable and objeto_final and contratista_final:
-                    break
+        if not (responsable and objeto_final and contratista_final):
+            for linea in L:
+                cons_ppt = _txt(linea.get("cons_ppt"))
+                if cons_ppt:
+                    if not responsable and cons_ppt in mapa_subsec:
+                        responsable = mapa_subsec[cons_ppt]
+                    if not objeto_final and cons_ppt in mapa_objeto_detalle:
+                        objeto_final = mapa_objeto_detalle[cons_ppt]
+                    if not contratista_final and cons_ppt in mapa_contratista_detalle:
+                        contratista_final = mapa_contratista_detalle[cons_ppt]
+                    if responsable and objeto_final and contratista_final:
+                        break
         salida.append({
             "nro": c["nro"], "contratista": "" if ocultar_contratista else contratista_final,
             "objeto": objeto_final, "valor_contrato": valor,
