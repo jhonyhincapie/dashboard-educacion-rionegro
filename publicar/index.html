@@ -18,7 +18,8 @@ body{font-family:"Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;colo
 
 /* Encabezado */
 header{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;padding:18px 0 10px}
-header .logo img{height:66px;display:block}
+header .logo img{height:104px;width:auto;display:block}
+header>div:last-child:empty{display:none}
 header .titulo{text-align:center}
 header .sec{font-size:20px;color:var(--azul);font-weight:400;letter-spacing:.2px}
 header h1{font-size:34px;line-height:1.1;color:var(--azul);font-weight:800;letter-spacing:-.3px}
@@ -174,9 +175,9 @@ tr.det td.r{padding:6px 8px;background:#fff}
       <div class="sec">Secretaría de Educación</div>
       <h1 id="tituloVista">Informe de Ejecución Presupuestal</h1>
       <div class="sub">RESUMEN EJECUTIVO</div>
-      <div class="corte">Corte: <b id="corte">…</b></div>
+      <div class="corte" id="corteBox">Corte: <b id="corte">…</b></div>
     </div>
-    <div class="lema">Rionegro, ciudad de oportunidades<i></i></div>
+    <div></div>
   </header>
 
   <nav class="tabs">
@@ -440,9 +441,14 @@ function renderTabla(){
   h+=`<tr class="total nodo${S.sel==='ALL'?' sel':''}" data-id="ALL"><td class="n">TOTAL EDUCACIÓN</td>${[t.definitivo,t.reservado,t.comprometido,t.obligado,t.pagado].map(x=>`<td>${Fmt.num(x)}</td>`).join('')}${celdasBrecha(t,'')}<td>${Fmt.pct(pc)}</td><td>${Fmt.pct(pp)}</td></tr>`;
   $('tbody').innerHTML=h;
 }
+function setCorte(){
+  const j=S.json;if(!j)return;
+  const cont=!$('vCont').hidden,f=j.fecha_ultima_actualizacion_detalle;
+  $('corteBox').innerHTML=cont&&f?'Última actualización: <b>'+esc(f)+'</b>':'Corte: <b>'+esc(j.corte)+'</b>';
+}
 function renderPie(){
   const j=S.json,val=j.validacion;
-  $('corte').textContent=j.fecha_ultima_actualizacion_detalle||j.corte;
+  setCorte();
   $('fuente').textContent=`Fuente: ${j.archivo} · leído ${j.generado}`;
   $('valid').innerHTML=val.ok===null?`<span class="val-bad">Sin verificar: el Excel no trae totales guardados (ábralo y guárdelo en Excel para validar). Los rubros se muestran tal cual están en el archivo.</span>`:val.ok?`<span class="val-ok">✔ Validado: la suma de ${val.rubros} rubros coincide con el TOTAL GENERAL y los SUBTOTALES del Excel</span>`
     :`<span class="val-bad">⚠ ${val.diferencias.length} diferencia(s) contra el Excel: ${esc(val.diferencias.map(d=>d.dato+' ('+Fmt.num(d.diferencia)+')').join('; '))}</span>`;
@@ -687,6 +693,7 @@ function verTab(t){
   $('vPres').hidden=cont;$('vCont').hidden=!cont;
   document.querySelectorAll('.tabs button').forEach(b=>b.classList.toggle('on',b.dataset.tab===t));
   $('tituloVista').textContent=cont?'Seguimiento de Contratos':'Informe de Ejecución Presupuestal';
+  setCorte();
   if(cont&&!C.json)cCargar();
 }
 document.querySelector('.tabs').onclick=e=>{const b=e.target.closest('[data-tab]');if(b)verTab(b.dataset.tab);};
