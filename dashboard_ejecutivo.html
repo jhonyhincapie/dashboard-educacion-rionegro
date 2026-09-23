@@ -457,7 +457,7 @@ function render(){
 }
 
 /* =====================  EVENTOS  ===================== */
-$('selComp').onchange=e=>seleccionar(e.target.value);
+$('selComp').onchange=e=>{if(e.target.value==='ALL'){S.q='';S.abiertos.clear();seleccionar('ALL',false);}else seleccionar(e.target.value);};
 $('selSub').onchange=e=>seleccionar(e.target.value);
 $('btnTodos').onclick=()=>{S.q='';S.abiertos.clear();seleccionar('ALL',false);};
 $('tbody').onclick=e=>{
